@@ -1,0 +1,1 @@
+Search of espacenet in smart search. Download of first 26 results in Excel and csv. Illustrates problems with character encoding. File espacenet_pizza_raw_fromexcel.csv was created from save as and illustrates issues with the original .csv downloaded from espacenet relating to character corruption. 

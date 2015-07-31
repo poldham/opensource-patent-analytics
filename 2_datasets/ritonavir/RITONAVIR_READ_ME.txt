@@ -1,0 +1,1 @@
+The ritonavir dataset is taken from the WIPO patent landscape report on ritonavir and can be accessed here http://www.wipo.int/patentscope/en/programs/patent_landscapes/reports/ritonavir.html
