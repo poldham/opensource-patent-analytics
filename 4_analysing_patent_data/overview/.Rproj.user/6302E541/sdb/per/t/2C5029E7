@@ -1,0 +1,17 @@
+{
+    "contents" : "library(knitr)\nmy.jekyll.site <- \"/Users/pauloldham17inch/poldham.github.io\"\nKnitPost <- function(input, base.url = my.jekyll.site) {\n  opts_knit$set(base.url = base.url)\n  fig.path <- paste0(\"images/\", sub(\".Rmd$\", \"\", basename(input)), \"/\")\n  opts_chunk$set(fig.path = fig.path)\n  opts_chunk$set(fig.cap = \"center\")\n  render_jekyll()\n  knit(input, envir = parent.frame())\n}\n\n##Code courtesy of Jerid Francom\n",
+    "created" : 1437928398441.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2612409038",
+    "id" : "2C5029E7",
+    "lastKnownWriteTime" : 1437928401,
+    "path" : "~/poldham.github.io/Myjekyllsite.R",
+    "project_path" : null,
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : true,
+    "type" : "r_source"
+}

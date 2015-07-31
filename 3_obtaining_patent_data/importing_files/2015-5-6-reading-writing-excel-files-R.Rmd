@@ -1,0 +1,185 @@
+---
+layout: post
+title: "Reading and Writing an Excel File in R"
+author: "Paul Oldham"
+date: "24 March 2015"
+output: html_document
+---
+
+The [CRAN Project](http://cran.r-project.org/doc/manuals/r-release/R-data.html#Reading-Excel-spreadsheets) has the following to say about importing Excel files into R. 
+
+"The first piece of advice is to avoid doing so if possible! If you have access to Excel, export the data you want from Excel in tab-delimited or comma-separated form, and use read.delim or read.csv to import it into R. (You may need to use read.delim2 or read.csv2 in a locale that uses comma as the decimal point.)."
+
+This is very sound advice. The best option when dealing with Excel is generally to use `save as` to save the file as a .csv and then import it into R. However, there are a number of ways of reading an Excel file into R. We will  deal with two of them in this walkthrough focusing on the patent datasets in our [open access patent datasets folder](https://drive.google.com/open?id=0B4piiKOCkRPDNThTWU1QQVYyRnM&authuser=0). Feel free to use your own dataset. 
+
+One challenge with R and Excel files is that no one package seems to do everything that you want. In particular, reading from URLs is a bit of a minefield particularly on secure connections (https:).  If this walkthrough doesn't meet your needs then try this R-bloggers [overview](http://www.r-bloggers.com/read-excel-files-from-r/) on the range of available packages. The R-bloggers excel topic listing also has lots of useful articles covering working with excel in more depth than this short article. To find additional help try [stackoverflow](http://stackoverflow.com/questions/tagged/r). 
+
+We will focus on:
+
+1. Using the [xlsx](http://www.r-bloggers.com/importexport-data-to-and-from-xlsx-files/) package
+2. Using the new [readxl](http://blog.rstudio.org/2015/04/15/readxl-0-1-0/) package
+
+To read an Excel file into R first install the package or tick the box in the Packages list to load it or load the library.
+
+```{r eval=FALSE}
+install.packages("xlsx")
+```
+
+Load the library
+```{r}
+library(xlsx)
+```
+
+You can use your own local excel file but we will use the file [wipotrends](https://drive.google.com/file/d/0B4piiKOCkRPDNWhrdGxXc0YwTk0/view?usp=sharing) in the [patent dataset folder](https://drive.google.com/open?id=0B4piiKOCkRPDNWhrdGxXc0YwTk0&authuser=0) for this example. Other test Excel datasets in the folder are [ewaste](https://drive.google.com/open?id=0B4piiKOCkRPDZGZ4dlJsVEN4TEk&authuser=0) and [solarcooking](https://drive.google.com/open?id=0B4piiKOCkRPDMUVSaFJtdXlOX28&authuser=0). Download the file and save it to your computer. Then copy the local file path. 
+
+##Reading a local file
+
+We will use a file called [wipotrends](https://drive.google.com/open?id=0B4piiKOCkRPDNWhrdGxXc0YwTk0&authuser=0)
+
+Let's open the file up to inspect it briefly. We will see that it contains one worksheet and that the column headings begin at row 5. To load it into R we will use the `read.xlxs` function and specify arguments to tell R where to look for and handle the data. 
+
+```{r eval=FALSE}
+wipotrends <- read.xlsx("/Users/pauloldham17inch/Desktop/open_source_master/2_datasets/wipo/wipotrends.xlsx", sheetIndex = 1, startRow = 5, endRow = 23, as.data.frame = TRUE, header=TRUE)
+```
+
+`sheetIndex = n` tells R to import the first worksheet (working numerically). `startRow = n` tells R where to start reading the data (if not the first row).
+`endRow = n` tells R where to stop reading the data. Note that in this case the data stops at row 23 from the first row. You do not need to specify this value but in some cases R will read in NA values for extra rows below the actual data (try excluding `endRow =` and reimport the data to test this)
+`as.data.frame = ` tells R whether to convert the data into a data frame. Generally this is a good thing. The default will import the data as a list. 
+`header = TRUE` tells R whether or not there are column headings in the start row.
+
+In general it is good practice in your work to create Excel workbooks with 1 sheet and headings in the first row. However, as we can see from the WIPO example, reality tends to be different. That means that it is important to inspect the data before hand. Other things to consider are: 
+
+1. Checking for corrupted characters and correcting them using find and replace in Excel or Open Office (see this [video](https://youtu.be/YYaMEbJW7Qw?list=PLsZOGmKUMi54n8R06U1HmxNywt0bAFays)).
+2. Tidy up column names by removing characters such as '\' or brackets that could cause problems (for example R will generally import inventor(s) as inventor.s). Consider removing blank spaces in column titles or replacing with '_' and regularising the case (e.g. all lower case ). This will make life easier later. 
+3. Dealing with any leading or trailing spaces using TRIM() in Excel or Open Office.
+4. Filling blank cells with NA (see this quick [video](https://youtu.be/40isuia2w3w?list=PLsZOGmKUMi54n8R06U1HmxNywt0bAFays))
+5. Any formulas, such as column or row sum functions, may not be wanted and could cause confusion when you run your own calculations. 
+
+The above preparation steps will generally take a few minutes but can save a lot of work later on. Jeff Leek provides a very good guide to preparatory steps in [The Elements of Data Analytic Style](https://leanpub.com/datastyle) and we will be following these steps in our patent analysis work. 
+
+Let's take a look at the other available arguments by calling up the description.
+
+```{r eval=FALSE}
+?read.xlsx()
+```
+
+The range of arguments is below. 
+
+`read.xlsx(file, sheetIndex, sheetName=NULL, rowIndex=NULL,
+  startRow=NULL, endRow=NULL, colIndex=NULL,
+  as.data.frame=TRUE, header=TRUE, colClasses=NA,
+  keepFormulas=FALSE, encoding="unknown", ...)`
+
+Because Excel workbooks often contain more than one sheet, R needs to know where to find the right sheet. This is generally easy to do by number rather than name using `sheetName =`. `Row index =` will indicate the rows that you want to extract (if there are specific rows). 
+
+`startRow =` will indicate whether to start reading into R from the first row or from a later row. Quite often there are spaces or explanatory text in the top row or rows. It pays to examine the dataset first and count the rows. As a matter of good practice use the first rows for column headings only and put other material elsewhere (a readme text file or a new worksheet called readme). 
+
+The `endRow =` argument specifies where to stop reading the data. 
+
+`colIndex` - indicates the columns that you want to extract. NULL is the default and will import all columns. 
+
+`as.data.frame = TRUE`  helpfully tells R to create a data frame. If not then a List will be created. 
+
+`header = TRUE or FALSE` specifies whether the columns have names. In this case if we had not started at `startRow = 5`, the header would have appeared as "Figure.A.1.1.1.Trend.in.patent.applications.worldwide" followed by more text. To try this for yourself change the startRow to 1 and reimport the data giving wipotrends a different name. 
+
+Let's take a look at wipotrends
+
+```{r eval=FALSE}
+wipotrends
+```
+
+In reviewing wipo trends note that the row numbers refer to data rows (we have excluded the padding in rows 1 -4). If we were spending time with this data we might also want to turn the columns to lowercase and 'growth rate' to 'growth_rate' (but see below on `readxl`).
+
+##Writing Excel Files
+
+It is generally better to write a .csv file rather than an Excel file because the results can be used in a wider range of tools (including Excel) and will be cleaner (see below). However, to write an excel file with the new data frame use the `write.xlsx()` function. Before running the command it is generally a good idea to use the command `getwd()` to display the working directory you are in so that you know where the file will be saved. To change the directory to a new location use `setwd("yourpathtofile")`.
+
+```{r eval=FALSE}
+write.xlsx(wipotrends, "yourfilenamepath_new.xlsx", sheetName="Sheet1", col.names = TRUE, row.names = TRUE, append = FALSE, showNA = TRUE)
+```
+
+This will create a new file called wipotrends_new. Note three points here: 
+
+1. Give your file a **new name** if writing into the same directory. Otherwise R will overwrite your existing file. Assuming you don't want to overwrite the original give the new file a sensible name.
+1. If you select `row.names = FALSE` R will write a new column with row numbers (in this case)
+2. Selecting `showNA = TRUE` will fill any blank cells with NA. That is useful when coming back into R to tidy up and select data. Blank cells are the enemy of calculations and it is better to fill the cells with a value where possible. 
+
+##Writing Excel to CSV
+
+While Excel is popular in reality it is better to use .csv when using or sharing data across a range of software tools. To write results into .csv use `write.csv()`. Call up the description for write.csv with ?write.csv in console. See the .csv walkthrough for further details.   
+
+```{r eval=FALSE}
+write.csv(wipotrends, file = "yourfilenamepath_new.csv", row.names = FALSE)
+```
+
+#Using the Readxl package
+
+readxl is a new package from RStudio and is still a work in progress. We will cover it here because as the package develops it will become more popular and you are more likely to use it.
+
+
+```{r eval=FALSE}
+install.packages("readxl")
+```
+
+```{r eval=FALSE}
+library(readxl)
+```
+
+At the moment readxl version 0.1.0 has two functions. 
+
+1. `excel_sheets(path)` where path is the path to the xls/xlsx file. This function will list all the sheets in an excel spreadsheet to help you select the sheet that you want to import. 
+
+For example, if we add a couple of sheets to wipotrends_new.xlsx then `excel_sheets()` will provide the names as follows:
+
+[1] "Sheet1"        "my sheet"      "another sheet"
+
+This is very helpful if you don't know how many sheets are in a workbook or you want to call them by name. 
+2. `read_excel()`
+
+```{r eval=FALSE}
+read_wipo <- read_excel("/Users/pauloldham17inch/Desktop/open_source_master/2_datasets/wipo/wipotrends.xlsx", col_names = TRUE, na = "",  skip = 5)
+```
+
+
+The main advantage of `read_excel` (as with `read_csv` in the `readr` package) is that the data imports into an easy to print object with three attributes a `tbl_df` a `tbl` and a `data.frame`. To see this run the following test on your dataset (replace the dataset name as needed). 
+
+COL NAMES IS NOT WORKING!!!!!
+
+```{r}
+class(read_wipo)
+```
+
+If you are using dplyr and tidyr (and we assume that you will be) then the creation of a tbl_df makes life much easier. 
+
+Let's take a quick look at the main arguments (use ?read_excel to bring them up)
+
+```{r}
+?read_excel
+```
+
+`read_excel` has the following arguments at the moment. 
+
+read_excel(path, sheet = 1, col_names = TRUE, col_types = NULL, na = "",
+  skip = 0)
+
+As we can see, we can specify the sheet number or the sheet name, for example `sheet = "my sheet"` would import that sheet. 
+
+`col_names = TRUE` will use the first row as column names. `col_types = NULL` means that R will guess the type of column but it can be specified as "blank", "numeric", "date", or "text"
+
+`na = ""`, this is very helpful because by default it will fill blank cells with NA on import. 
+
+`skip = n` specifies the number of rows to skip before starting to read the data in. 
+
+Bear in mind that readxl may struggle with reading dates correctly, but expect that to also change in the future.
+
+At the time of writing there is no `write_excel` function but expect that to change.   
+
+##Reading Excel files from URL locations
+
+It is faster to simply download the file to your drive, or swim the atlantic ocean, than to successfully download an excel file on http: or, in particular https:. So maybe ask yourself what is the path of least resistance and run with that. 
+
+##Getting Help and Further Resources
+
+1. For additional functionality experiment with the **XLConnect** package in Packages. Read the documentation on [CRAN](http://cran.r-project.org/web/packages/XLConnect/index.html). This adds a lot of functionality in working with Excel files in R. 
+2. See the R-bloggers [overview](http://www.r-bloggers.com/read-excel-files-from-r/) article on the range of packages for working with Excel files. 
+

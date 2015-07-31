@@ -1,0 +1,9 @@
+{
+    "path" : "~/opensource-patent-analytics/4_analysing_patent_data/tableau",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

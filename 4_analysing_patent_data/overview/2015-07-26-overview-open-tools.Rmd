@@ -1,0 +1,426 @@
+---
+layout: post
+title: "An Overview of Open Source Tools for Patent Analytics"
+author: "Paul Oldham"
+date: "26 July 2015"
+punblished: true
+---
+
+This article provides an overview of the open source and free software tools that are available for patent analytics. The aim of the article is to serve as a quick reference guide for some of the main tools in the tool kit. We will go into some of these tools in more depth elsewhere in the WIPO Open Source Patent Analytics Manual and leave you to explore the rest of the tools for yourself. 
+
+Before we start it is important to note that we cover only a fraction of the available tools that are out there. We have simply tried to identify some of the most accessible and useful tools. Data mining and visualisation are growing rapidly to the point that it is easy to be overwhelmed by the range of choices. The good news is that there are some very high quality free and open source tools out there. The difficulty lies in identifying those that will best serve your specific needs relative to your background and the time available to acquire some programming skills. That decision will be up to you. However, to avoid frustration it will be important to recognise that the different tools take time to master. In some cases, such as R and Python, there are lots of free resources out there to help you take the first steps into programming. In making a decision about a tool to use, think carefully about the level of support that is already out there. Try to use a tool with an active and preferably large community of users. That way, when you get stuck, there will be someone out there who has run into similar issues who will be able to help. Sites such as [Stack Overflow](http://stackoverflow.com) are excellent for finding solutions to problems. 
+
+This article is divided into 8 sections:
+
+1. General Tools
+2. Cleaning Tools
+3. Data Mining
+4. Data Visualisation
+5. Network Visualisation
+6. Infographics
+7. Geographic Mapping
+8. Text Mining
+
+In some cases tools are multifunctional and so may appear in one section where they could also appear in another. Rather than repeating information we will let you figure that out. 
+
+###General Tools
+
+Quite a number of free tools are available for multi-purpose tasks such as basic cleaning of patent data and visualisation. We highlight three free tools here. 
+
+***1. [Open Office](https://www.openoffice.org)***
+
+Many patent analysts will use Excel as a default programme including basic cleaning of smaller datasets. However, it is well worth considering Apache Open Office as a free alternative. While patent analysis will typically use the Spreadsheet (Open Office Calc) there is also a very useful Database option as an alternative to Microsoft Access. 
+
+- Download and Install [Apache Open Office](https://www.openoffice.org) for your system.
+- Tip: When saving spreadsheet files, choose save as **.csv** to avoid situations where a programme can't read the default **.odt** files.
+
+***2. [Google Sheets](https://www.google.co.uk/sheets/about/)***
+
+Google Sheets require a free Google account and those who are comfortable with Excel may wonder why it is worth switching. However, Google Sheets can be shared online with others and there are a large number of free add ons that could be used to assist with cleaning data such as Split Names or Remove duplicates as shown below. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/google_sheets_addon.png)
+
+***3. [Google Fusion Tables](https://support.google.com/fusiontables/answer/2571232?hl=en)***
+
+Fusion Tables are similar to Google Sheets but can work with millions of records. However, it is worth trying with smaller datasets to see if Fusion Tables suit your needs. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/Fusion-Tables.png)
+
+Fusion Tables appear very much like a spreadsheet. However, the Table also contains a `cards` feature which allows each record to be seen as a whole and easily filtered. The cards can be much easier to work with than the standard row format where information in a record can be difficult to take in. Fusion Tables also attempts to use geocoded data to draw a Google Map as we can see in the second image below for the publication country from a sample patent dataset.
+
+![_config.yml]({{ site.baseurl }} /images/overview/Fusion-Tables-Cards.png)
+
+![_config.yml]({{ site.baseurl }} /images/overview/Fusion-Tables-Map.png)
+
+##Cleaning Tools
+
+***1. [Open Refine](http://openrefine.org) (formerly Google Refine)***
+
+A fundamental rule of data analysis and visualisation is: `rubbish in = rubbish out`. If your data has not been cleaned in the first place, do not be surprised if the results of analysis or visualisation are rubbish. 
+
+An in depth article is available [here](http://poldham.github.io/openrefine-patent-cleaning/) on the use of [Open Refine](http://openrefine.org), formerly Google Refine, for cleaning patent data. For patent analytics Google Refine is a very important free tool for cleaning applicant and inventor names. 
+
+![_config.yml]({{ site.baseurl }} /images/openrefine/OpenRefine-download.png)
+
+A number of platforms provide data cleaning facilities and it is possible to do quite a lot of basic cleaning in either Open Office or Excel. Open Refine is the most accessible tool for timely cleaning of patent name fields. In particular, it is very useful for splitting and cleaning thousands of patent applicant and inventor names. 
+
+##Data Mining
+
+There are an ever growing number of data mining tools out there. Here are a few of those that have caught our attention with additional tools listed below. 
+
+1. [RStudio](http://www.rstudio.com)
+
+A very powerful tool for working with data and visualising data using R and then writing about it (this article, and the wider Manual, is entirely written in RStudio). While the learning curve with R can be intimidating a great deal of effort goes in to making R accessible through [tutorials](http://www.rstudio.com/resources/training/online-learning/) such as those on [DataCamp](https://www.datacamp.com), [webinars](http://www.rstudio.com/resources/webinars/), [R-Bloggers](http://www.r-bloggers.com) and [Stack Overflow](http://stackoverflow.com/questions/tagged/r) and free university courses such as the well known John Hopkins University R Programming Course on [Coursera](https://www.coursera.org/course/rprog). Indeed, as with Python, there is so much support for users at different levels that it is hard ever to feel alone when using R and RStudio. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/RStudio.png)
+
+To get started with R download RStudio for your platform by [following these instructions](https://www.rstudio.com/products/rstudio/download/). 
+
+If you are completely new to R then [DataCamp](https://www.datacamp.com/) is a good place to start. The free John Hopkins University [R Programming Course on Coursera](https://www.coursera.org/course/rprog) is also very good. The John Hopkins University course is accompanied by the Swirl tutorial package that can be installed using `install.packages("Swirl") when you have installed R. This is a real asset when getting started. 
+
+In developing this Manual we mainly focus on R. However, we would emphasise that Python may also be important for your needs. For a recent discussion on the strengths and weaknesses of R and Python see this [Datacamp article on the `Data Science Wars` and accomapnying excellent infographic](http://www.r-bloggers.com/choosing-r-or-python-for-data-analysis-an-infographic/). 
+
+2. [RapidMiner Studio](https://rapidminer.com/products/studio/)
+
+Comes with a free service and a variety of tiered paid plans. RapidMiner focuses on machine learning, data mining, text mining and analytics. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/RapidMiner.png)
+
+3. [KNIME](http://www.knime.org)
+
+An open platform for data mining. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/KNIME.png)
+
+Other data mining tools (such as [WEKA](http://www.cs.waikato.ac.nz/ml/weka/) and [NLTK](http://www.nltk.org) in Python are covered below). If you would like to explore other data mining software try this [article](http://www.predictiveanalyticstoday.com/top-free-data-mining-software/) for some ideas.
+
+##Data Visualisation
+
+If you are new to data visualisation we suggest that you might be interested in the work of Edward Tufte at Yale University and his famous book [The Visual Display of Quantitative Information](http://en.wikipedia.org/wiki/Edward_Tufte). His [critique of the uses and abuses of Powerpoint](http://users.ha.uth.gr/tgd/pt0501/09/Tufte.pdf) is also entertaining and insightful. The work of Stephen Few, such as [Show Me the Numbers: Designing Tables and Graps to Enlighten](http://www.analyticspress.com/show.html) is also popular.
+
+Remember that data visualisation is first and foremost about communication with an audience. That involves choices about how to communicate and finding ways to communicate clearly. In very many cases the outcome of patent analysis and visualisation will be a report and a presentation. Tufte's critique of [powerpoint presentations](http://users.ha.uth.gr/tgd/pt0501/09/Tufte.pdf) should be required reading for presenters. You may also like to take a look at Nancy Duarte's [Resonate](http://resonate.duarte.com/#!page0) for ideas on polishing up presentations and storytelling. The style may not suit everyone but [Resonate](http://resonate.duarte.com/#!page0) contains very useful messages and insights. In an offline environment, consider Katy Borner's [Atlas of Science: Visualising What We Know](https://mitpress.mit.edu/index.php?q=books/atlas-science) as an excellent guide to the history of visualisations of scientific activity including pioneering visualisations of patent activity. Bear in mind that effective visualisation takes practice and is a quite well trodden path. 
+
+There are a lot of choices out there for data visualisation tools and the number of tools is growing rapidly. For business analytics Gartner provides a useful (but subscription based)[Magic Quadrant for Business Intelligence and Analytics](http://www.informationweek.com/big-data/big-data-analytics/gartner-bi-magic-quadrant-2015-spots-market-turmoil/d/d-id/1319214) report that seeks to map out the leaders in the field. These types of reports can be useful for spotting up and coming companies and checking if there is a free version of the software (other than a short free trial). 
+
+We would suggest thinking carefully about your needs and the learning curve involved. For example, if you have limited programming knowledge (or no time or desire to learn) choose a tool that will largely do the job for you. If you already have experience with javascript, Java, R or Python, or similar, then choose a tool that you feel most comfortable with. In particular, keep an eye out for tools with an API (application programming interface) in a variety of language flavours (such as Python or R) that are likely to meet your needs. 
+
+If you are completely new to data visualisation [Tableau Public](https://public.tableau.com/s/gallery) and [our walk through article]((http://poldham.github.io/tableau-patents/) are a good place to learn without knowing anything about programming. Some other tools in this list are similar to Tableau Public (in part because Tableau is the market leader). We will also provide some pointers to visualisation overview sites at the end of this section where you can find out about what is new and interesting in data visualisation. 
+
+***1. [Google Charts](https://developers.google.com/chart/interactive/docs/gallery)***
+
+- Create a Google Account to Access Google Spreadsheets and other Google programmes
+- Take a look at the [Google Charts Gallery](https://developers.google.com/chart/interactive/docs/gallery) and [API](https://developers.google.com/chart/interactive/docs/reference)
+- For an overview of using Google Charts in R then see the `GoogleVis` package and its examples [here](http://cran.r-project.org/web/packages/googleVis/vignettes/googleVis.pdf)
+- For an overview using Google Charts with Python see the [google-chartwrapper](https://code.google.com/p/google-chartwrapper/) or [Python Google Charts](http://python-google-charts.readthedocs.org/en/latest/#)
+
+![_config.yml]({{ site.baseurl }} /images/overview/google_sheets_addon.png)
+
+***2. [Tableau Public](https://public.tableau.com/s/)***
+
+An in depth article on getting started with patent analysis and visualisation using Tableau Public is available [here](http://poldham.github.io/tableau-patents/). When your patent data has been cleaned, Tableau Public is a powerful way of developing interactive dashboards and maps with your data and combining it with other data sources. Bear in mind that Tableau Public data is, by definition, public and it should not be used with sensitive data. 
+
+![_config.yml]({{ site.baseurl }} /images/tableau/profile_dashtabs.png)
+
+The workbook can be viewed online [here](https://public.tableau.com/profile/wipo.open.source.patent.analytics.manual#!/).
+
+***3. R and RStudio***
+
+R is a statistical programming language for working with all kinds of different types of data. It also has powerful visualisation tools including `packages` that provide an interface with Google Charts, [Plotly](https://plot.ly) and others. If you are interested in using R then we suggest using RStudio which can be downloaded [here](http://www.rstudio.com/). The entire WIPO Open Source Patent Analytics Manual was written in RStudio using Rmarkdown to output the articles for the web, .pdf and presentations. As this suggests, it is not simply about data visualisation. To get started with R and RStudio try the free tutorials at [DataCamp](https://www.datacamp.com/). We will cover R in more detail in other articles. 
+
+As part of an approach described as `The Grammar of Graphics`, inspired by [Leland Wilkinson's work](https://en.wikipedia.org/wiki/Leland_Wilkinson), developers at RStudio and others have created packages that provide very useful ways to visualise and map data. The links below will take you to the documentation for some of the most popular data visualisation packages. 
+
+1. [ggplot2](http://cran.r-project.org/web/packages/ggplot2/index.html)
+2. [ggvis](http://cran.r-project.org/web/packages/ggvis/index.html)
+3. [ggmap](http://cran.r-project.org/web/packages/ggmap/index.html)
+4. [googleVis](http://cran.r-project.org/web/packages/googleVis/index.html)
+
+We will cover `ggplot2` and `ggvis` in greater depth in future articles. Until then, to get started see the articles on `ggplot2` on [R-Bloggers](http://www.r-bloggers.com/search/ggplot2) and here for [ggvis](http://www.r-bloggers.com/?s=ggvis). Datacamp offers a free tutorial on the use of `ggvis` that can be accessed [here](http://www.r-bloggers.com/ggvis-tutorial-become-a-data-visualization-expert-with-rstudio/). For a wider overview of some of the top R packages see Qin Wenfeng's recent [awesome R list](https://github.com/qinwf/awesome-R).
+
+###[Shiny](http://shiny.rstudio.com)
+
+Shiny from [RStudio]((http://www.rstudio.com/)) is a web application framework for R. What that means is that you can output tables and visual data from R such as those from the tools mentioned above to the web. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/Shiny.png)
+
+[Shiny apps](http://shiny.rstudio.com) for R users allows for the creation of online interactive apps (upto 5 for free). See the [Gallery](http://shiny.rstudio.com/gallery/) for examples. See [RBloggers](http://www.r-bloggers.com/search/shiny) for more examples and tutorials.
+
+[Radiant](http://vnijs.github.io/radiant/index.html) is a browser based platform for business analytics in R. It is based on Shiny (above) but is specifically business focused. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/Radiant.png)
+
+For a series of starter videos on Radiant see [here](http://vnijs.github.io/radiant/tutorials.html). 
+
+***4. [IBM Many Eyes](http://www-01.ibm.com/software/analytics/many-eyes/)***
+
+You need to Register for a free account to really understand what this is about, [try this page](http://www-969.ibm.com/software/analytics/manyeyes/) and select register in the top right. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/manyeyes.png)
+
+***5.	Other Visualisation Tools***
+
+- [Tulip](http://tulip.labri.fr/TulipDrupal/): data visualization framework in C++
+- [SigmaJS](http://sigmajs.org/): JavaScript library dedicated to graph drawing. It allows the creation of interactive static and dynamic graphs 
+- [Kendo UI](http://www.telerik.com/download/kendo-ui-web-open-source): Create widgets for responsive visualisations.  
+- [Timeline](http://timeline.knightlab.com/): A KnightLab (northwestern university) is a tool allowing for the creation of interactive timelines and is available in 40 languages  
+- [Miso Project](http://misoproject.com/): open source toolkit facilitating the creation of interactive storytelling and data visualization  
+- [Sci2](https://sci2.cns.iu.edu/user/index.php): A toolset for studying science. ƒmi
+- [Simile Widgets](http://www.simile-widgets.org) Web widgets for storytelling as a spin off from the SIMILE Project at MIT. 
+- [jqPlot](http://www.jqplot.com). An open source jQuery based Plotting Plugin. 
+- [dipity](http://www.dipity.com) for Timelines (free and Premium services)
+
+For additional visualisations see [visualizing.org](http://www.visualizing.org/) and [Open Data Tools](http://opendata-tools.org/en/visualization/).
+
+###Network Visualization
+
+Network visualisation software is an important tool for visualising actors in a field of science and technology and, in particular, the relationships between them. For patent analysis it can be used for a range of purposes including:
+
+1. Visualising networks of applicants and inventors in a particular field or scientific researchers. An example of this type of work for synthetic biology is [here](http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0034368) for a network of approximately 2,000 authors of articles on synthetic biology. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/synbio.png)
+
+2. Visualising areas of technology and their relationships using the International Patent Classification and the Cooperative Patent Classification (CPC). Previous work at WIPO pioneered the use of large scale network analysis to identify the [patent landscape for animal genetic resources](http://www.wipo.int/patentscope/en/programs/patent_landscapes/reports/animal_gr.html).
+
+The image below displays a network map of Cooperative Patent Classification Codes and International Patent Classification codes for 10s of thousands of patent documents that contain references to a range of farm animals (cows, pigs, sheep etc). The dots are CPC/IPC codes describing areas of technology. The clusters show tightly linked documents that share the same codes that can then be described as 'modules' or clusters. The authors of the landscape report animal genetic resources used this network as an exploratory tool to extract and examine the documents in the cluster for relevance. Distant clusters (such as) Cooking equipment and Animal Husbandry (housing of animals etc.) were discarded. The authors later used network mapping to explore and later classify the individual clusters. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/animals.png)
+
+3. Visualising networks of key terms in patent documents and their relationships with other terms as part of the exploration and refinement of analysis. In this case the authors have clustered similar terms onto each other using word stemming to understand the contents of the new breeds of animals cluster above in relation to animal breeding. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/breeds_cluster.png)
+
+As such, network visualisation can be seen as both an exploratory tool for defining the object of interest and as the end result (e.g. a defined network of actors in a specific area). 
+
+***1. [Gephi](https://gephi.github.io)*** is Java based open source network generating software. It can cope with large datasets (depending on your computer) to produce powerful visualisations.
+
+![_config.yml]({{ site.baseurl }} /images/overview/Gephi.png)
+
+One issue that may be encountered, particularly by Mac users, is problems with installing the right Java version although work is under way to address this problem.
+
+To create `.gexf` network files in R try the [gexf](http://cran.r-project.org/web/packages/rgexf/index.html) package and example code and source code [here](https://bitbucket.org/gvegayon/rgexf/wiki/Home). In Python try the [pygexf](https://github.com/paulgirard/pygexf) library and for anything else such as Java, Javascript C++ and Perl see [gexf.net](http://gexf.net/format/). 
+
+***2. [NodeXL](http://nodexl.codeplex.com)***
+
+For die hard Excel users, [NodeXL](http://nodexl.codeplex.com) is a plug in that can be used to visualise networks. It works well.
+
+![_config.yml]({{ site.baseurl }} /images/overview/NodeXL.png)
+
+***3.[Cytoscape](http://www.cytoscape.org/what_is_cytoscape.html)*** 
+
+[Cytoscape](http://www.cytoscape.org/what_is_cytoscape.html) is another network visualisation programme. It was originally designed for the visualisation of biological networks and interactions but, as with so many other bioinformatics tools, can be applied to a wider range of visualisation tasks. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/cytoscape.png)
+
+We mainly have experience with using Gephi (above) but Cytoscape is well worth exploring and may not suffer from the Java version issues that have affected Mac users (in particular) when working with Gephi. Cytoscape also works with Windows, Mac and Linux. 
+
+***4. [Pajek](http://mrvar.fdv.uni-lj.si/pajek/)***
+
+This is one of the oldest and most established of the free network tools and is Windows only (or run via a Virtual Machine). It is widely used in bibliometrics and can handle large datasets. It is a matter of personal preference but tools such as Gephi may be superceding Pajek because they are more flexible. However, Pajek may possibly have an edge in precision, ease of reproducibility and the important ability to easily save work that Gephi can lack as a Beta programme. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/Pajek.png)
+
+Data can also be exported from Pajek to Gephi for those who prefer the look and feel of Gephi. 
+
+***5. [VOS Viewer](http://www.vosviewer.com/Home)***
+
+VOS Viewer from Leiden University is similar to Gephi and Cytoscape but also presents different types of landscape (as opposed to pure network node and edge visuals). The latest version can also speaks to both Gephi and Cytoscape. It is worth testing for different visual display options and its ability to handle Web of Science and Scopus bibliographic data. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/VOSviewer.png)
+
+***6. [Hive Plots](http://www.hiveplot.net)***
+
+We are not entirely sure what to make of Hive Plots. However, we have a lot of sympathy with the aims. The aim of network visualisation should be to clarify the complex... not "wow, look, I made something that looks like sphagetti" (although that is normally part of the process). So, we find Hive Plots developed by Martin Krzywinski at the Genome Sciences Center at the BC Cancer Agency interesting. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/HivePlots.png)
+
+Designed for large networks there are packages for Hive plots in Python through [pyveplot](https://pypi.python.org/pypi/pyveplot/) and [hiveplot](https://github.com/ericmjl/hiveplot). For R there is [HiveR](http://academic.depauw.edu/~hanson/HiveR/HiveR.html) with documentation available on CRAN [here](http://cran.r-project.org/web/packages/HiveR/index.html). 
+
+In closing this discussion of network mapping tools it is also important to note that network visualisations need to be exported as images. This means that there are additional requirements for image handling software. Open source tools such as [The GNU Image Manipulation Program or GIMP](http://www.gimp.org) are perfectly adequate and easy to use for image handling. Where using labels particular attention should be paid to outlining the text to ensure consistency of display across different computers. These kinds of tasks can be performed in tools such as GIMP. 
+
+For other sources of network visualisation see [FlowingData](http://opendata-tools.org/en/visualization/). Also try [Visual Complexity](http://www.visualcomplexity.com/vc/) and [visualising data](http://www.visualisingdata.com/index.php/resources/) for sources of inspiration.  
+
+##Infographics
+
+Infographics are increasingly part of the communication toolkit. They are particularly useful for communicating the results of research in an easily digestible yet informative form. The WIPO Patent Landscape Project has developed a range of infographics with the latest being  for the [Animal Genetic Resoutces Patent Landscape Report](http://www.wipo.int/export/sites/www/patentscope/en/programs/patent_landscapes/reports/documents/animal_genetics_infographic.pdf) and [Assistive Devices and Technologies](http://www.wipo.int/patentscope/en/programs/patent_landscapes/reports/assistive_devices.html). 
+
+The growing popularity of infographics has witnessed the rise ofa range of online services including free services. In more cases these will have limitations such as the number of icons etc. that can be used in a graphic. However, as a growing sector that may change. Here are a few services with free options that may be worth exploring. 
+
+1. [Piktochart.com](http://piktochart.com)
+2. [Canva.com](https://www.canva.com/create/infographics/)
+3. [Infogr.am](https://infogr.am/pricing)
+4. [Visme](http://www.visme.co)
+3. [Easel.ly](http://www.easel.ly/create/#)
+
+Websites such as [Cool Infographics](http://www.coolinfographics.com) can be useful for finding additional sources, exploring what is hot in the inforgraphics world and tutorials. Tools such as Apple Keynote, Open Office Presentation or Powerpoint can be very useful for wireframing (sketching out) infographics to see what works. 
+
+##Geographical Mapping
+
+In addition to the ubiquitous [Google Maps](https://www.google.com/maps/) or well known [Google Earth](https://www.google.co.uk/intl/en_uk/earth/) we think it is well worth taking a close look at other services. 
+
+[OpenStreetMap](http://www.openstreetmap.org/#map=5/51.500/-0.100)
+
+Rightly popular. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/OpenStreetMap.png)
+
+[Leaflet](http://leafletjs.com)
+
+A very popular Open Source JavaScript library for interactive maps
+
+![_config.yml]({{ site.baseurl }} /images/overview/Leaflet.png)
+
+Accessible through an API. R users could use the `leafletr` package with tutorials and walk throughs available at [R-bloggers](http://www.r-bloggers.com/?s=leaflet). For Python users try `folium` [here](https://github.com/python-visualization/folium) or [here](https://pypi.python.org/pypi/folium). 
+
+[Tableau Public](https://public.tableau.com/s/)
+
+Already mentioned above. Tableau Public uses Open Street Map to create a powerful combination of interactive graphs that can be linked to maps geocoded at various levels of detail. See an example [here](https://public.tableau.com/profile/poldham#!/vizhome/SyntheticBiologyScientificLandscape/SyntheticBiologyTrends) for the scientific literature on synthetic biology. 
+
+Tableau Public is probably the easiest way to get started with creating your own maps with patent data. The map below was produced using custom geocoding and connecting the data to publication country and the titles of scientific publications. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/tableaumap.png)
+
+To view the interactive version try this [page](http://public.tableau.com/profile/poldham#!/vizhome/SyntheticBiologyScientificLandscape/SyntheticBiologyTrends). It is possible to easily create simple yet effective maps in Tableau Public. 
+
+[QGIS](http://www.qgis.org/en/site/)
+
+A very popular and sophisticated software package running on all major platforms. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/QGIS.png)
+
+Using QGIS Oldham and Hall et al mapped the worldwide geographical locations of marine scientific research and patent documents making reference to deep sea locations such as hydrothermal vents (see [Valuing the Deep](https://www.researchgate.net/publication/273139809_Valuing_the_Deep_Marine_Genetic_Resources_in_Areas_Beyond_National_Jurisdiction)). This is a low resolution QGIS map of scientific research locations in the oceans based on text mining of the scientific literature. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/valuing1.png)
+
+[Geonames.org](http://www.geonames.org). 
+
+Not a mapping programme, instead geonames is an incredibly useful database of georeferenced place names from around the world along with a RESTful [web service](http://www.geonames.org/export/web-services.html). If you need to obtain the georeferenced data for a large number of places then this should be your first stop.
+
+![_config.yml]({{ site.baseurl }} /images/overview/GeoNames.png)
+
+[iCharts](http://icharts.net/product/web-data-visualization)
+
+A Free and Premium data visualisation service:
+
+![_config.yml]({{ site.baseurl }} /images/overview/icharts.png)
+
+[OpenLayers3](http://openlayers.org)
+
+OpenLayers3 allows you to add your own layers to OpenStreetMap and other data sources and may come in very useful if you are seeking to create your own layers. It also has an API and tutorials. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/OpenLayer.png)
+
+[CartoDB](https://cartodb.com/gallery/)
+
+Free and paid accounts with a nice looking gallery of examples
+
+![_config.yml]({{ site.baseurl }} /images/overview/CartoDB.png)
+
+[d3.js](http://d3js.org)
+
+A javascript library for manipulating data and documents. This seems to be the library behind some of the other frequently mentioned visualisation tools on the web. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/D3.png)
+
+[Highcharts](http://www.highcharts.com)
+
+Free for non-commercial use with a variety of pricing plans.
+
+![_config.yml]({{ site.baseurl }} /images/overview/highcharts.png)
+
+[Datawrapper](https://datawrapper.de)
+
+An entirely open source service for creating charts and maps with your data. Widely used by big newspapers and so the graphics will seem familiar. Either create an account or fork the source from Github [here](https://github.com/datawrapper/datawrapper). There is a free option and a set of pricing plans. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/Datawrapper.png)
+
+[Plotly](https://plot.ly/feed/)
+
+Free and with an API with clients for R, Python and Matlab, Plotly is an increasingly popular free service that uses the D3.js library mentioned above with the enterprise version used by companies such as Google. Plotly is increasingly popular and has a range of API clients for Python, Matlan, R, Node.js, and Excel. Plotly's ease of use and access from a range of environments are big reasons for its growing success. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/Plotly.png)
+
+## Text Mining
+
+There are a lot of text mining tools out there and many of them are free or open source. Here are some that we have come across. 
+
+***1.  [Jigsaw Visual Analytics](http://www.cc.gatech.edu/gvu/ii/jigsaw/)*** for exploring and understanding document collections. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/Jigsaw.png)
+
+***2. [Weka](http://www.cs.waikato.ac.nz/ml/weka/)*** 
+
+Java based text mining software. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/Weka.png)
+
+***3.	Word Trees***
+
+Word trees can be used for detailed investigation of texts such as claims trees. The first two examples are taken from the forthcoming WIPO Guidelines for the Preparation of Patent Landscape Reports
+
+[Google Word Trees](https://developers.google.com/chart/interactive/docs/gallery/wordtree) on the Google Developers site provides instructions for generating word trees using Javascript
+
+![_config.yml]({{ site.baseurl }} /images/overview/Word-Trees.png)
+
+and [Jason Davies(https://www.jasondavies.com/wordtree/) tree creator. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/Word-Tree-Davies.png)
+
+[KH Coder](http://sourceforge.net/projects/khc/?source=directory): free software allowing quantitative content analysis/text mining  
+
+![_config.yml]({{ site.baseurl }} /images/overview/KHCoder.png)
+
+***R and the `tm` package***
+
+The `tm` package in R (e.g. using RStudio) provides access to a range of text mining tools. For an introduction from the package developers see [here](http://cran.r-project.org/web/packages/tm/vignettes/tm.pdf). A number of very usefyl tutorials are also available for text mining on [R-bloggers](http://www.r-bloggers.com/?s=text+mining). For a step by step approach see [Graham Williams (2014) Hand-On Data Science with R Text Mining](http://onepager.togaware.com/TextMiningO.pdf).
+
+For a recent overview of text mining tools in R see [Fridolin Wild's (2014) CRAN Task View: Natural Language Processing](http://cran.r-project.org/web/views/NaturalLanguageProcessing.html) listing the various packages and their uses. 
+
+Note that many text mining packages in general focus on generating words. For non-academic purposes this is not very useful. Patent analysis will typically focus on extracting and analysing `phrases`. Therefore look for tools that will extract phrases and allow them to be interrogated in depth. 
+
+***Python and Text Mining***
+
+There are quite a few resources available on text mining using Python. Note that Python may well be ahead of R in terms of text mining resources (until we are proven wrong). However, note that Python and R are increasingly used together to exploit there different strengths. Here are a few resources to help you get started. 
+
+1. [The Natural Language Toolkit (NTLK)](http://www.nltk.org) appears to be the leading package and covers almost all major needs. The accompanying book [Natural Language Processing with Python](http://shop.oreilly.com/product/9780596516499.do) may also be worth considering. 2. The [Python Textmining Package](http://www.christianpeccei.com/textmining/). This is simpler than the giant NTLK package but may suit your needs. 
+
+![_config.yml]({{ site.baseurl }} /images/overview/ntlk.png)
+
+This [detailed tutorial](http://textminingonline.com/dive-into-nltk-part-i-getting-started-with-nltk) may be helpful for those wanting to get started with the NTLK package in Python.
+
+***Other text mining resources***
+
+For a wider range of text mining options see this predictive analytics article on the [top 20 free text mining software tools](http://www.predictiveanalyticstoday.com/top-free-software-for-text-analysis-text-mining-text-analytics/).  
+
+For other free text mining tools try some of the corpus linguistics websites such as [The Linguist List](http://linguistlist.org:8888/sp/SearchWRListing-action.cfm?subclassid=7223&SearchType=LF&WRTypeID=2), this [list](http://www.uow.edu.au/~dlee/software.htm), or this [list](http://ucrel.lancs.ac.uk/tools.html). Bear in mind that most of these tools are designed with linguists in mind and quite a number may be showing their age. However, even simple concordancing tools, such as [AntConc](http://www.laurenceanthony.net/software/antconc/) can play an important role in filtering large numbers of documents to extract useful information.
+
+Some analysis tools such as [VantagePoint from Search Technology Inc.](https://www.thevantagepoint.com) have been especially developed and adapted for processing patent data and are available in a subsidised version for students from the [vpinstitute](http://vpinstitute.org/wordpress/vp-marketplace/). There are also a number of qualitative data analysis software tools that can be applied to patent analysis such as [MAXQDA](http://www.maxqda.com), [NVivo](http://www.qsrinternational.com/products_nvivo.aspx),  [Atlas TI](http://atlasti.com) and [QDA Miner](http://provalisresearch.com/products/qualitative-data-analysis-software/). However, with the exception of [QDA Miner Lite](http://provalisresearch.com/products/qualitative-data-analysis-software/freeware/) (Windows only), while they offer free trials they do not fall into the category of free or open source sofware that is our focus. 
+
+##Round Up
+
+In this article we have covered some of the major free and open source tools that are avaiable for patent analysis. These are not patent specific tools but can be readily adapted to patent analysis. With the exception of cleaning of patent applicant and inventor names and concatenated fields, patent data is very well suited for visualisation and network mapping. The availability of country level data, address fields and place names in texts also means that patent data can be readily used for geographical mapping. 
+
+In practice, it is important to identify a set of tools that work best for you and the type of patent analysis tasks that work best for you. 
+
+It is also important to emphasise that in practice you may use a mixture of paid for tools and free tools. For example, the recent [WIPO Patent Landscape for Animal Genetic Resources](http://www.wipo.int/patentscope/en/programs/patent_landscapes/reports/animal_gr.html) involved the use of GNU Parallel and Map Reduce for large scale text mining of 11 million whole text patents using pattern matching in Ruby, combined with the use of PATSTAT for statistics, Thomson Innovation and VantagePoint for validation, and Tableau and Gephi for visualisation. In short, it is possible to perform almost all patent analysis tasks, using free tools, but in practice a mixed ecosystem of open source and commercial tools may produce the best workflow for the tasks you perform. As such, it is important to think about the tools that are needed and where they support and strengthen existing analysis workflows.
+
+As we mentioned above, if moving into open source software for the first time it may be useful to develop a list of basic questions to assess whether they are suited for your particular needs. The following list is not meant to be definitive or exhaustive but aims to encourage thinking about your particular requirements.  
+
+1. Does this tool make sense? That is, is it immediately clear what the purpose of a tool is? If the answer is yes, this is a good sign. If the answer is no, the tool may be too specialised for your particular needs or the creators may be struggling with clearly expressing what the tool is trying to do (a bad sign).  
+2. Do you understand the language the tool is written in? Is it a problem if you don't (see below)? Is it worth training someone in this language? Are there free or affordable courses available?
+3. Is the source code open or proprietary and what are the terms and conditions of the open source licence? When using open source or free software it is important to be clear what the precise provisions of the licence mean. For example, are you required to make any modifications to the source code available to others on exactly the same terms as the original licence? If you are working with source code this is an important IP question. If you are not working at the source code level this may not be an issue, but it always always makes sense to understand the open source licence.
+4. Who owns the data? If you upload data to a web based service, who owns the data once it is uploaded and who else may have access to it and under what conditions? These questions are particularly pertinent where the data is commercially relevant. 
+5. What does free actually mean? Free versions are often a lead in to premium services (hence the term `freemium`). This transition is a key feature of open source business models. In some cases free may be highly restricted in terms of the amount of data that can be processed, saved or exported. In other cases, no restrictions on use of the tool are imposed. However, knowledge about the use of the tool may be the real premium or cost factor, particularly if you come to depend on that tool. Be prepared for this. 
+6. What other companies (or patent offices) are using this tool? This can be an indicator of confidence and also provides examples of concrete use cases.  
+7. Is the tool well supported with documentation and tutorials? This is an indicator of maturity and 'buy in' by a community of developers and users.   
+8. How large is the community of users and are they active in creating forums and blogs etc. to support the wider community of users?
+9. Is this a one function tool or a multi-purpose tool? That is, will this tool cover almost all needs or is it a specific `good to have` component in a toolkit. In some cases a tool that does one thing very well is a real asset where other tools fall down because they try to do too many things and do them badly. Of the tools listed above, R and Python (possibly in combination) come closest to tools that could be used for a complete patent analysis workflow from data aquisition right through to visualisation. In practice, most patent analysis toolkits will consist of both general and specific tools.  
+10. Can I break this tool? It is always a very good idea to work out where the limitations of software lie so that you are not taken by surprise later when trying to do something that is mission critical. In particular, software may claim to perform particular tasks, such as handling thousands or millions of records, but do them very badly, if at all. By pushing a tool past its limits it is possible to determine where the limits are and how to get the best out of it. 
+11. Is the tool proportionate to my needs? There has recently been a great deal of excitement about `Big Data` and the use of  [Hadoop](https://hadoop.apache.org) for dealing with large volumes of data using distributed computing. While Hadoop is open source, so anyone can use it, its adoption would generally be disproportionate for the needs of most patent analysis except where dealing with almost the entire corpus of global patent documents, large volumes of literature and considerable quantities of scientific data. By way of illustration, as noted above, the WIPO Animal Genetic Resources Landscape report used GNU Parallel to process 11 million patent records. The decision to use GNU Parallel was partly made on the basis that Hadoop would have been complicated to implement and overkill for the particular use case. In short, it is worth carefully considering whether a tool is both appropriate and proportionate to the task at hand. 
+12. Finally, the golden rule for adopting any tool for patent analysis can be expressed in very simple terms. Does this work for me?
+
+If you have any suggestions for free or open source tools that we should include in the manual please feel welcome to add a comment below or send an email. 
+
+###Credits: 
+
+The development of the list of open source tools benefited from the following articles. 
+1. [Creative Bloq 11/11/2014 The 37 best tools for data visualization](http://www.creativebloq.com/design-tools/data-visualization-712402) 
+2. [Nismith Sharma 2015 The 14 best data visualization tools. TNW News](http://thenextweb.com/dd/2015/04/21/the-14-best-data-visualization-tools/)
