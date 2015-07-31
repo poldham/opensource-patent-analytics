@@ -1,0 +1,1 @@
+The ewaste dataset is taken from the WIPO patent landscape report on waste and can be accessed here http://www.wipo.int/patentscope/en/programs/patent_landscapes/reports/ewaste.html
