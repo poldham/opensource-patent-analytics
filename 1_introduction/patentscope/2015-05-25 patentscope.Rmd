@@ -1,0 +1,66 @@
+---
+layout: post
+title: "Obtaining Patent Data: Patentscope"
+author: "Paul Oldham"
+date: "25 May 2015"
+published: true
+---
+
+[Patentscope](https://patentscope.wipo.int/search/en/search.jsf) is the WIPO public access database. It includes coverage of the Patent Cooperation Treaty applications (administered by WIPO) and a [wide range of other countries](https://patentscope.wipo.int/search/en/help/data_coverage.jsf) including the European Patent Office, USPTO and Japan totalling 45 million patentr documents incuding 2.7 million PCT applications.
+
+In this article we cover the basics of using Patentscope to search for and download upto 10,000 records. A detailed [User's Guide](http://www.wipo.int/edocs/pubdocs/en/patents/434/wipo_pub_l434_08.pdf) provides more details on specific features. When compared with other free services Patentscope has the following main strengths. 
+
+1. Full text access to PCT applications on the day of publication.
+2. Download upto 10,000 records
+3. Expand search terms into multiple other languages using `Cross Lingual Expansion` or [CLIR](https://patentscope.wipo.int/search/en/clir/clir.jsf?new=true)
+4. Simple, Advanced and Combined Field searching 
+5. Accessible in multiple languages and a [WIPO Translate](https://www3.wipo.int/patentscope/translate/translate.jsf?interfaceLanguage=en) text function
+6. [Mobile version](https://patentscope.wipo.int/search/mobile/index.jsf) and [https:](http://www.wipo.int/patentscope/en/news/pctdb/2015/news_0002.html) access
+7. [Sequence listing downloads](https://patentscope.wipo.int/search/en/sequences.jsf)
+
+The best approach to obtaining patent data from Patentscope is to register for a free account. If not you will not be able to download the data, or gain access to the sequence download area. To register for a free account go [here](https://patentscope.wipo.int/search/en/reg/registration.jsf)
+
+##Collections to Search
+
+Perhaps the best place to start is with the collections we will be searching. Those can be accessed under the Options menu on the main menu and then the tab reading [office](https://patentscope.wipo.int/search/en/reg/registration.jsf)
+
+![_config.yml]({{ site.baseurl }} /images/patentscope/collections.png)
+
+We can see here that there are quite a few collections available for search including all the main offices. If you are only interested in particular collections, this is the place to change the settings. 
+
+##Simple Search
+
+We can select a range of different fields for search. In this case I have selected full text from the drop down menu for a simple search on the term pizza.
+
+![_config.yml]({{ site.baseurl }} /images/patentscope/simplesearch.png)
+
+##Results
+
+![_config.yml]({{ site.baseurl }} /images/patentscope/patentscopsesimple_pizza.png)
+
+10,000 results are downloaded at a time. 
+
+![_config.yml]({{ site.baseurl }} /images/patentscope/results.png) 
+
+##Cross Lingual Searching
+
+![_config.yml]({{ site.baseurl }} /images/patentscope/pizzacrosslingual.png)
+
+##Exporting Results
+
+![_config.yml]({{ site.baseurl }} /images/patentscope/pizzaexporting.png)
+
+##Sequence Data
+
+![_config.yml]({{ site.baseurl }} /images/patentscope/sequencesearching.png)
+
+##Sequence Data Sample
+
+![_config.yml]({{ site.baseurl }} /images/patentscope/pctseq.png)
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+---
+title: 'Getting Started: Open Source Patent Software Tools'
+author: "Paul Oldham"
+date: "24 March 2015"
+output: slidy_presentation
+---
+###Basic Tools for Open Source Patent Analysis
+
+In developing the Open Source Patent Analysis Manual we will be using a number of tools. To get started you might want to download and sign up for some or all of the the following:
+
+- [Open Office](https://www.openoffice.org))
+- Google Spreadsheets and [Google Charts](https://developers.google.com/chart/interactive/docs/gallery) (Google Account)
+- [Open Refine]((http://openrefine.org))
+- [Gephi](http://gephi.github.io)
+- [RStudio](http://www.rstudio.com))
+- [Python](https://www.python.org)
+- [Tableau Public](http://www.tableausoftware.com/products/public)
+
+We will cover these and other resources below. 
+
+###Open Office
+
+- Download and Install [Apache Open Office](https://www.openoffice.org)
+- Open Office is an open source alternative to Microsoft Office
+- You will mainly be using the Open Office Spreadsheets. 
+- Tip: When saving files save as **.csv** to avoid situations where a programme can't read **.odt** files.
+- Excel is not open source, but if you are very familiar with it you may want to carry on. Note that Excel introduces extra invisible characters that will cause problems at various points. 
+
+###Google Charts
+
+- Create a Google Account to Access Google Spreadsheets and other Google programmes
+- Take a look at the [Google Charts Gallery](https://developers.google.com/chart/interactive/docs/gallery) and [API](https://developers.google.com/chart/interactive/docs/reference)
+- As part of the sign up you may want to download and install [Google Drive](https://www.google.com/drive/) to store and share files. As an alternative use [Dropbox](https://www.dropbox.com)
+
+###Github
+
+Github is a platform for collaborating on open source projects using online repositories. There are two aspects to installing Github (git and Github itself).
+
+- The Github [website](https://github.com) will lead you through the instructions.
+- Github [bootcamp](https://help.github.com/categories/bootcamp/) is useful as an introduction. 
+
+You can find the open source patent analytics project [repository](https://github.com/poldham/opensource-patent-analytics) and [home page](http://poldham.github.io/opensource-patent-analytics/) on Github. 
+
+###Open Refine [website](http://openrefine.org)
+
+Used to assist with data cleaning and manipulation. Formerly known as Google Refine and now an open source tool.
+
+- Download Open Refine for your Platform [here](http://openrefine.org/download.html)
+
+###Network Visualization
+
+Gephi is a powerful Java network visualization programme. It is eternally in beta but can be used to visualise concepts, inventors and applicants.
+
+- Download [gephi](http://gephi.github.io)
+- Note that installing gephi can cause problems for Mac users with respect to the Java version (Apple disables Java by default). Follow the help pages on this. Work is ongoing to address this problem on Macs. 
+- [Cytoscape](http://www.cytoscape.org/what_is_cytoscape.html) is another network visualisation programme
+- [Pajek](http://pajek.imfm.si/doku.php) is another (windows based) programme that is quite popular.
+- [Vos Viewer](http://www.vosviewer.com/Home) is also quite popular.
+
+###Dashboarding and Interactivity
+
+-   [Tableau Public](http://www.tableausoftware.com/products/public). A free version of the Tableau Desktop visualization and analytics software that allows for the creation of interactive dynamic graphs and geocoded maps. The [Gallery](http://www.tableau.com/public/gallery) shows what can be done. Not for use with sensitive data. 
+- [Shiny apps](http://shiny.rstudio.com) for R users allows for the creation of online interactive apps (upto 5 for free). See the [Gallery](http://shiny.rstudio.com/gallery/) for examples. See [RBloggers](http://shiny.rstudio.com/gallery/) for more examples and tutorials
+
+###R and RStudio
+
+1.  “R” is a programming language that is mainly used for statistics. It sounds intimidating but thinking of it as "Arrrrr...me hearties" and Captain Jack Sparrow may help. [RStudio](http://www.rstudio.com) has made R much more accessible to non-programmers. 
+2. One of the strengths of R is that it is possible to import, clean, graph, visualize and map patent data in one place. 
+3. There is plenty of support for using R, such as [Rbloggers](http://www.r-bloggers.com)
+4. John Hopkins University offers excellent free courses on [programming with R](https://www.coursera.org/course/rprog) through [Coursera](https://www.coursera.org). The courses are tough but rewarding.
+5. The open source patent analysis manual will walk through some of the basic steps in using R to get you started. 
+
+###Python
+
+1. [Python](https://www.python.org) is an easy to learn programming language that some researchers are already using for patent research. 
+2. Existing tools for working with patents include George Song's [EPO OPS Code](https://github.com/55minutes/python-epo-ops-client). 
+3. [Patentsnapper](https://github.com/55minutes/python-epo-ops-client) for USPTO patents. 
+4. [Patent 2 Net](https://github.com/Patent2net/Patent2Net) is an open source Python package to allow researchers, small companies and developing countries to access patent data using the EPO OPS service.
+
+###Text Mining
+
+This list will grow quite a lot in the coming weeks and months. But here are some we found interesting. 
+
+17. [Jigsaw Visual Analytics](http://www.cc.gatech.edu/gvu/ii/jigsaw/) for exploring and understanding dociument collections. 
+18.	[Weka](http://www.cs.waikato.ac.nz/ml/weka/) Java based text mining software. 
+19.	Word Trees: claims analysis, various options. See for example [Google Word Trees](https://developers.google.com/chart/interactive/docs/gallery/wordtree) and [Jason Davies(https://www.jasondavies.com/wordtree/) tree creator. 
+
+###Other Tools and Resources
+
+This is a mixed list of other tools we have heard about but need to take a proper look at. 
+1.	[KH Coder](http://sourceforge.net/projects/khc/?source=directory): free software allowing quantitative content analysis/text mining  
+2.	[LabPlot](http://labplot.sourceforge.net/): KDE-application for interactive graphing and analysis of scientific data, allowing the creation, managing and editing of plots, based on data from a spreadsheet or on data imported from external files. Plots can be exported to several pixmap and vector graphic formats. creating and editing plots  
+3.	[imDEV](http://sourceforge.net/projects/imdev/?source=recommended): application of RExcel, integrating Excel and R for multivariate data visualization, exploration, and analysis. Interactive modules for dimensional reduction (imPCA), prediction (imPLS), feature selection, analysis of correlation (imCorrelations) and generation of networked structures (imGraph) provide an integrated environment for systems level analysis of multivariate data. 
+
+###Other Tools (continued)
+
+4.	[Tulip](http://tulip.labri.fr/TulipDrupal/): data visualization software  
+5.	[SigmaJS](http://sigmajs.org/): JavaScript library dedicated to graph drawing. It allows the creation of interactive static and dynamic graphs 
+6.	[Kendo UI](http://www.telerik.com/download/kendo-ui-web-open-source): Create widgets for responsive visualisations.  
+7.	[Timeline](http://timeline.knightlab.com/): A KnightLab (northwestern university) is a tool allowing for the creation of interactive timelines and is available in 40 languages  
+
+###Other Tools (continued)
+
+8.	[Miso Project](http://misoproject.com/): open source toolkit facilitating the creation of interactive storytelling and data visualization  
+9.	[Sci2](https://sci2.cns.iu.edu/user/index.php): A toolset for studying science. 
+10.	[IBM Many Eyes](http://www-969.ibm.com/software/analytics/manyeyes/#/visualizations) visualizations. More of a website than a tool but worth a look around? 
