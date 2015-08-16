@@ -1,0 +1,67 @@
+Sample dataset for synthetic biology patent activity
+
+Suggested Citation. Paul Oldham, 2015. Synthetic Biology Patent Training Dataset.
+
+Created by: Paul Oldham
+Source: Thomson Innovation full text search for <"synthetic biology" or "synthetic genomics" or "synthetic genome" or "synthetic genomes">
+Query based on: http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0034368
+Search collections: All patent applications and grants (excludes utility model collections)
+Search date 09/02/2015
+Results: 1922 raw results
+Original internal file: synthetic biology WOS PLOS 09032015 1922
+
+About: This dataset contains a sample of patent data for activity referencing synthetic biology. It is simply a sample for training purposes and should not be interpreted as representing the patent landscape for synthetic biology. 
+
+License: This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License. To view a copy of this license, visit http://creativecommons.org/licenses/by-nc-sa/4.0/. For specific details see license_synbio_patents.txt in this folder.
+
+Actions:
+
+Tool: VantagePoint
+
+1. Deduplicated results to 1 record per INPADOC First Family Member. There are 576 first family members linked to 659 publications. 
+2. Imported all available field in Thomson Records
+3. Cleaning synthetic biology inventor names:
+4. Fuzzy logic match (List Cleanup) with INPADOC First family member as the match criteria. 
+5. Test other match criteria (e.g) applications. Revealed no further grouping
+6. General match (no criteria) revealed no further grouping
+7. Cleaned inventors using inventors original and applicant matching windows (manual). 
+8. removed accents e.g. Guttierez Gomez
+9. For Applicant names applied cleaning script using Derwent Applicant Codes and Long Name
+10. Manual clean of results of 9 using applicant original with address and inventor matching
+11. Applied script for AcadGov etc in VantagePoint. Manually assigned missed results based on web lookup. Non-profit research organisations are allocated to academic.
+12. Title (original), applied proper case to remove capitals
+13. Country code fields. Applied thesaurus to generate full country names (all applicable fields, e.g publication country, inventors, etc.)
+14. Family member counts. Create matrix of INPADOC First Family Members (as rows) and INPADOC Family Members as columns. Count columns (matrixrowsum) in VantagePoint
+to generate counts of family members
+15. Citing Patent counts by family. Create matrix of INPADOC First Family Members against citing patent number
+16. Merged Abstract (Words), Abstract (Phrases), Claims (Words), Claims (Phrases), Title (Words), Title (Phrases) into one field called TAC Words Phrases
+17. Applied Thesaurus to International Patent Classification
+18. Applied Thesaurus to Cooperative Patent Classification
+19. Applied Proper case to Cooperative Patent classification
+20. Basic manual clean up of Citing First Assignee
+21. Links to espacenet generated on publication numbers. 
+22. Classified patent family members into Applications based on A kind codes (except US before 2001, assigned to grants).Grants assumed on kind code B. Looked up T, D codes
+for relevant countries using (http://www.thomsonfilehistories.com/docs/RESOURCES_Kind%20Codes%20by%20Country.pdf) and WIPO standard (http://www.wipo.int/export/sites/www/standards/en/pdf/07-03-02.pdf)
+Note that assumption on Kind code A and B as equivalent to applications and grants respectively is strictly a proxy measure and is likely to require adjustment for varying uses. 
+23. Mapped the Global Names Index to the TAC (Title, Abstracts and Claims) field as a precise match. Note that this will not capture all instances for which a 'contains' search would be needed. Species data is therefore indicative rather than definitive. 
+24. Cross mapped groups from title, abstract and claims to show phrases origins.
+25. Created raw groups for composite terms for bio, nano and `-` that are not identified as multi-word phrases. Reviewed top results. 
+26. Applied claims stop list to remove claims, claims 1-x etc. and created new list 
+27. Basic clean up of cited literature
+28. Identified and created group on DOIs for Cited literature
+29. Imported family size calculation
+30. Removed brackets and punctuation from field names
+31. Created SEQ ID field based on search for SEQ, SEQ ID, SEQID, sequence or sequences in TAC Words and Phrases. May require further work. 
+32. Compared SEQ list with claims phrases list (note phrases only) and created TAC Words Phrases SEQ Claims.
+33. Applied proper case to Attorney Agent field.
+34. Main text fields moved to end of sequence of fields for ease of manipulation later.
+35. Exported limited set of fields to .csv
+36. In excel character encoding problems emerged through lack of recognition of UTF8. Opened and edited in Open Office Calc as UTF8
+37. Export markers removed, column names edited for legibility, column names to lower case. Filled spaces in names with '_'.
+38. International classifications. Note classification is international classification 8 (IPC8).cpc refers to the Cooperative Patent Classification.
+39. Export of full claims created spill over into blank cells. Data omitted. 
+40. Imported .csv to RStudio and filled blank cells with NA. Rexported. See synbio_na_16052015.csv in Workings folder for details. 
+41. Check revealed some noise created in final columns. Simply deleted. 
+41. Generated split files in RStudio with tidyr and dplyr for inventors, assignees (applicants), IPCs, species etc. and saved. 
+42. Trimmed white space from split steps and checked calculations in Vantage Point. 
+
