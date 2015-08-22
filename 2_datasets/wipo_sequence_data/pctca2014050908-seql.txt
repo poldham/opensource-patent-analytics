@@ -1,0 +1,432 @@
+                         SEQUENCE LISTING
+
+<110>  FOLIA BIOTECH INC.
+       LAMARRE, Alain
+ 
+<120>  PAPAYA MOSAIC VIRUS AND VIRUS-LIKE PARTICLES IN CANCER THERAPY
+
+<130>  V86634WO
+
+<140>  n/a
+<141>  2014-09-19
+
+<150>  61/886,481
+<151>  2013-10-03
+
+<150>  61/880,156
+<151>  2013-09-19
+
+<160>  7     
+
+<170>  PatentIn version 3.5
+
+<210>  1
+<211>  1522
+<212>  DNA
+<213>  Artificial sequence
+
+<220>
+<223>  sequence encoding synthetic RNA template for VLP production
+
+<400>  1
+gggcgaattg gagctcgaaa agaaacacaa agcaaagcaa agcaaagcaa ctcaaataaa       60
+
+ccatatttgg ccaaggcact tggtaatcaa acgggcacaa ccctagatta acgattaagc      120
+
+aaatttgagg agtgttttcg aacagttgaa cgacgtctca ctccgggctg ttattcaaga      180
+
+agaggcctac agagacatta agctcactat taaggaaact aaaacctaca atcctttaac      240
+
+acatccagta gcagtagcag atagtttaga aaaattagga atagaaacta acccctttgc      300
+
+cgtcaaggcg catacgctaa ccgcggcaaa aacaatagaa ttagattaat acaaaatagt      360
+
+ttctttctac ctcccaaagg agaaccccac taccttttaa ttctaaaaga ggagcaagtt      420
+
+gcaatatttt agaagaggcc cacagcaaaa agtaatattc ctcataactc acatagaacc      480
+
+caaagacgtg gctaggttaa acgtggacac cctttttgac aagaacgtga ccccacagat      540
+
+taccacaaac acagcctttt aaggggatac cctccatttt ctcccactaa cagcgattga      600
+
+aaggattttt aaatcctccc ccaacttcaa accctctacg ccacttaagt actcccaccg      660
+
+gaggccctgc ataggctgca ttccctgcac cctggtatat taaaattaga gtttcaccaa      720
+
+gaacatttca tctacaaacc agggggtcta actggggcag cgtacatcca caaatacgag      780
+
+caactcgagt ggattaaagt gggaaggttt aagtgggcgg acgggaaggg gcttacccac      840
+
+acggtgacct cacaaatttt ggaaactaaa ggtgccaacc acctcttcat ttttcagaga      900
+
+gggaggtttc tgactccaga attgaggtgt ttcaacactg agacaaaatt aatcacctaa      960
+
+cctcccatct tcctccccaa gcagtttata acccggttgc caattaagaa aaccaaccgg     1020
+
+tccgcccaac aattgtttct ctacgtaaaa tcagtgaaga taataacaga gagggacatc     1080
+
+tgggcaaagt aaagacagtt gctcaagact tcggagctac aagattacaa tccaagggag     1140
+
+gtggctctgc tggtgaacta ttttctcttg atcgccagat taaggtcgga aacgtgtttt     1200
+
+gacaacgtcc tcagcggggg ataattcaag aaactcttca aacccttcat cgctaagtgg     1260
+
+gagatccaaa aacacaaaat ttttggaata aaggagtttg aacagttata agaagctctg     1320
+
+gataaggtgg taataacact gacctaccca acaaaaactt ttgacaatcg gggttgggtg     1380
+
+gttaagctgg aagcgaggag gggttacgag tggttcgctg taaagtaaca caagccgaag     1440
+
+ggtccagaac taaacttgga ggagaagaaa acggatccgg acgccgcatc ctacgaaaaa     1500
+
+tacttgaaag ccctgaacgc gt                                              1522
+
+
+<210>  2
+<211>  215
+<212>  PRT
+<213>  Papaya mosaic virus
+
+
+<220>
+<221>  
+<223>  wild-type PapMV coat protein
+
+<400>  2
+
+Met Ser Lys Ser Ser Met Ser Thr Pro Asn Ile Ala Phe Pro Ala Ile 
+1               5                   10                  15      
+
+
+Thr Gln Glu Gln Met Ser Ser Ile Lys Val Asp Pro Thr Ser Asn Leu 
+            20                  25                  30          
+
+
+Leu Pro Ser Gln Glu Gln Leu Lys Ser Val Ser Thr Leu Met Val Ala 
+        35                  40                  45              
+
+
+Ala Lys Val Pro Ala Ala Ser Val Thr Thr Val Ala Leu Glu Leu Val 
+    50                  55                  60                  
+
+
+Asn Phe Cys Tyr Asp Asn Gly Ser Ser Ala Tyr Thr Thr Val Thr Gly 
+65                  70                  75                  80  
+
+
+Pro Ser Ser Ile Pro Glu Ile Ser Leu Ala Gln Leu Ala Ser Ile Val 
+                85                  90                  95      
+
+
+Lys Ala Ser Gly Thr Ser Leu Arg Lys Phe Cys Arg Tyr Phe Ala Pro 
+            100                 105                 110         
+
+
+Ile Ile Trp Asn Leu Arg Thr Asp Lys Met Ala Pro Ala Asn Trp Glu 
+        115                 120                 125             
+
+
+Ala Ser Gly Tyr Lys Pro Ser Ala Lys Phe Ala Ala Phe Asp Phe Phe 
+    130                 135                 140                 
+
+
+Asp Gly Val Glu Asn Pro Ala Ala Met Gln Pro Pro Ser Gly Leu Ile 
+145                 150                 155                 160 
+
+
+Arg Ser Pro Thr Gln Glu Glu Arg Ile Ala Asn Ala Thr Asn Lys Gln 
+                165                 170                 175     
+
+
+Val His Leu Phe Gln Ala Ala Ala Gln Asp Asn Asn Phe Thr Ser Asn 
+            180                 185                 190         
+
+
+Ser Ala Phe Ile Thr Lys Gly Gln Ile Ser Gly Ser Thr Pro Thr Ile 
+        195                 200                 205             
+
+
+Gln Phe Leu Pro Pro Pro Glu 
+    210                 215 
+
+
+<210>  3
+<211>  648
+<212>  DNA
+<213>  Papaya mosaic virus
+
+
+<220>
+<221>  
+<223>  sequence encoding wild-type PapMV coat protein
+
+<400>  3
+atgtctaagt caagtatgtc cacacccaac atagccttcc ccgccatcac ccaggaacag       60
+
+atgagctcga ttaaggtcga tccaacgtcc aatcttctgc cctcccaaga gcagttaaag      120
+
+tcagtgtcca ccctcatggt agctgctaag gttccagcag ccagtgttac aactgtggca      180
+
+ttggagttgg tcaacttctg ctatgacaat gggtccagcg cgtacaccac agtgactggc      240
+
+ccatcatcaa taccggagat atcactggca caattggcta gtattgtcaa agcttccggc      300
+
+acttccctta gaaaattctg ccggtacttc gcgccaataa tctggaatct gaggacggac      360
+
+aaaatggctc ctgccaattg ggaggcttca ggatacaagc caagcgccaa atttgccgcg      420
+
+ttcgacttct tcgacggggt ggagaatccg gcggccatgc aacccccttc gggactaatc      480
+
+aggtcgccga cccaggaaga gcggattgcc aatgctacca acaaacaggt gcatctcttc      540
+
+caagccgcgg cacaggacaa caactttacc agcaactccg ccttcatcac caaaggccaa      600
+
+atttctgggt caaccccaac catccaattc cttccacccc ccgaataa                   648
+
+
+<210>  4
+<211>  211
+<212>  PRT
+<213>  Artificial sequence
+
+<220>
+<223>  modified PapMV coat protein CPdeltaN5
+
+<400>  4
+
+Met Ala Ser Thr Pro Asn Ile Ala Phe Pro Ala Ile Thr Gln Glu Gln 
+1               5                   10                  15      
+
+
+Met Ser Ser Ile Lys Val Asp Pro Thr Ser Asn Leu Leu Pro Ser Gln 
+            20                  25                  30          
+
+
+Glu Gln Leu Lys Ser Val Ser Thr Leu Met Val Ala Ala Lys Val Pro 
+        35                  40                  45              
+
+
+Ala Ala Ser Val Thr Thr Val Ala Leu Glu Leu Val Asn Phe Cys Tyr 
+    50                  55                  60                  
+
+
+Asp Asn Gly Ser Ser Ala Tyr Thr Thr Val Thr Gly Pro Ser Ser Ile 
+65                  70                  75                  80  
+
+
+Pro Glu Ile Ser Leu Ala Gln Leu Ala Ser Ile Val Lys Ala Ser Gly 
+                85                  90                  95      
+
+
+Thr Ser Leu Arg Lys Phe Cys Arg Tyr Phe Ala Pro Ile Ile Trp Asn 
+            100                 105                 110         
+
+
+Leu Arg Thr Asp Lys Met Ala Pro Ala Asn Trp Glu Ala Ser Gly Tyr 
+        115                 120                 125             
+
+
+Lys Pro Ser Ala Lys Phe Ala Ala Phe Asp Phe Phe Asp Gly Val Glu 
+    130                 135                 140                 
+
+
+Asn Pro Ala Ala Met Gln Pro Pro Ser Gly Leu Thr Arg Ser Pro Thr 
+145                 150                 155                 160 
+
+
+Gln Glu Glu Arg Ile Ala Asn Ala Thr Asn Lys Gln Val His Leu Phe 
+                165                 170                 175     
+
+
+Gln Ala Ala Ala Gln Asp Asn Asn Phe Ala Ser Asn Ser Ala Phe Ile 
+            180                 185                 190         
+
+
+Thr Lys Gly Gln Ile Ser Gly Ser Thr Pro Thr Ile Gln Phe Leu Pro 
+        195                 200                 205             
+
+
+Pro Pro Glu 
+    210     
+
+
+<210>  5
+<211>  222
+<212>  PRT
+<213>  Artificial sequence
+
+<220>
+<223>  modified PapMV coat protein PapMV CPsm
+
+<400>  5
+
+Met Ala Ser Thr Pro Asn Ile Ala Phe Pro Ala Ile Thr Gln Glu Gln 
+1               5                   10                  15      
+
+
+Met Ser Ser Ile Lys Val Asp Pro Thr Ser Asn Leu Leu Pro Ser Gln 
+            20                  25                  30          
+
+
+Glu Gln Leu Lys Ser Val Ser Thr Leu Met Val Ala Ala Lys Val Pro 
+        35                  40                  45              
+
+
+Ala Ala Ser Val Thr Thr Val Ala Leu Glu Leu Val Asn Phe Cys Tyr 
+    50                  55                  60                  
+
+
+Asp Asn Gly Ser Ser Ala Tyr Thr Thr Val Thr Gly Pro Ser Ser Ile 
+65                  70                  75                  80  
+
+
+Pro Glu Ile Ser Leu Ala Gln Leu Ala Ser Ile Val Lys Ala Ser Gly 
+                85                  90                  95      
+
+
+Thr Ser Leu Arg Lys Phe Cys Arg Tyr Phe Ala Pro Ile Ile Trp Asn 
+            100                 105                 110         
+
+
+Leu Arg Thr Asp Lys Met Ala Pro Ala Asn Trp Glu Ala Ser Gly Tyr 
+        115                 120                 125             
+
+
+Lys Pro Ser Ala Lys Phe Ala Ala Phe Asp Phe Phe Asp Gly Val Glu 
+    130                 135                 140                 
+
+
+Asn Pro Ala Ala Met Gln Pro Pro Ser Gly Leu Thr Arg Ser Pro Thr 
+145                 150                 155                 160 
+
+
+Gln Glu Glu Arg Ile Ala Asn Ala Thr Asn Lys Gln Val His Leu Phe 
+                165                 170                 175     
+
+
+Gln Ala Ala Ala Gln Asp Asn Asn Phe Ala Ser Asn Ser Ala Phe Ile 
+            180                 185                 190         
+
+
+Thr Lys Gly Gln Ile Ser Gly Ser Thr Pro Thr Ile Gln Phe Leu Pro 
+        195                 200                 205             
+
+
+Pro Pro Glu Thr Ser Thr Thr Arg His His His His His His 
+    210                 215                 220         
+
+
+<210>  6
+<211>  2662
+<212>  DNA
+<213>  Artificial sequence
+
+<220>
+<223>  sequence encoding synthetic RNA template for VLP production
+
+<400>  6
+gggcgaattg gagctcgaaa agaaacacaa agcaaagcaa agcaaagcaa ctcaaataaa       60
+
+ccatatttgg ccaaggcact tggtaatcaa acgggcacaa ccctagatta acgattaagc      120
+
+aaatttgagg agtgttttcg aacagttgaa cgacgtctca ctccgggctg ttattcaaga      180
+
+agaggcctac agagacatta agctcactat taaggaaact aaaacctaca atcctttaac      240
+
+acatccagta gcagtagcag atagtttaga aaaattagga atagaaacta acccctttgc      300
+
+cgtcaaggcg catacgctaa ccgcggcaaa aacaatagaa ttagattaat acaaaatagt      360
+
+ttctttctac ctcccaaagg agaaccccac taccttttaa ttctaaaaga ggagcaagtt      420
+
+gcaatatttt agaagaggcc cacagcaaaa agtaatattc ctcataactc acatagaacc      480
+
+caaagacgtg gctaggttaa acgtggacac cctttttgac aagaacgtga ccccacagat      540
+
+taccacaaac acagcctttt aaggggatac cctccatttt ctcccactaa cagcgattga      600
+
+aaggattttt aaatcctccc ccaacttcaa accctctacg ccacttaagt actcccaccg      660
+
+gaggccctgc ataggctgca ttccctgcac cctggtatat taaaattaga gtttcaccaa      720
+
+gaacatttca tctacaaacc agggggtcta actggggcag cgtacatcca caaatacgag      780
+
+caactcgagt ggattaaagt gggaaggttt aagtgggcgg acgggaaggg gcttacccac      840
+
+acggtgacct cacaaatttt ggaaactaaa ggtgccaacc acctcttcat ttttcagaga      900
+
+gggaggtttc tgactccaga attgaggtgt ttcaacactg agacaaaatt aatcacctaa      960
+
+cctcccatct tcctccccaa gcagtttata acccggttgc caattaagaa aaccaaccgg     1020
+
+tccgcccaac aattgtttct ctacgtaaaa tcagtgaaga taataacaga gagggacatc     1080
+
+tgggcaaagt aaagacagtt gctcaagact tcggagctac aagattacaa tccaagggag     1140
+
+gtggctctgc tggtgaacta ttttctcttg atcgccagat taaggtcgga aacgtgtttt     1200
+
+gacaacgtcc tcagcggggg ataattcaag aaactcttca aacccttcat cgctaagtgg     1260
+
+gagatccaaa aacacaaaat ttttggaata aaggagtttg aacagttata agaagctctg     1320
+
+gataaggtgg taataacact gacctaccca acaaaaactt ttgacaatcg gggttgggtg     1380
+
+gttaagctgg aagcgaggag gggttacgag tggttcgctg taaagtaaca caagccgaag     1440
+
+ggtccagaac taaacttgga ggagaagaaa acggatccgg acgccgcatc ctacgaaaaa     1500
+
+tacttgaaag ccctgaacgc gtgccttttg cagaaagaac cggaggtcta agaagccaaa     1560
+
+gaagcagagg caacagtaaa accccaaagg cccgaaatta aggaagagca ggcggaggct     1620
+
+tccacgagtg ggagggctga agaaattcaa gaggatccgg caaccaggaa agggaaggag     1680
+
+gagccgaacc ccaatcggga cctgctctgc cctaacggat tacatctaaa gatcaaaata     1740
+
+accgaatttc ctgaacttcc ggtactcgat catccagatc atctcaccgg aagaaaagct     1800
+
+aagttctttt caaaggtaag aaagccatac tcctacacag gaggctcact aacatctcga     1860
+
+ggctggccaa attggctgga gaaaatttta gctgcaatag aaatcaaaga gccactgccg     1920
+
+gaattcaacc ataacttagt ccagcagttt aaactccaag cggccatccc attccaccga     1980
+
+gtaataaaac cgtgttatcc aaagggtcac caggttggcg ccctcaccat caaccactcg     2040
+
+ggagataacc tcacccaaat agcttgccaa aaaggaaagg caagtataac ctaaggattc     2100
+
+ggggactact acttgagccc agtgggattc caagagtccc acaagctaac ggtgagcaac     2160
+
+accacagggg gaagggtgtc tctgaccttc agtaacacag tccagcaaaa caaatttata     2220
+
+ataataagaa gttaagaagc ccttaataac cttccttgga aagcgtggat cccgaaactg     2280
+
+caaaatttag gattccaagg acggcagctt cagttaaatc ctataagagc actgattagc     2340
+
+cccactgagg aaattcgaag ctaacccaag tgtaagcctg aaggggttcc agaagtagtt     2400
+
+tacaagacgc tggacggact agctcgtgcg ccaactccat attcgccaaa ccctatccga     2460
+
+gctagagcat acacctcagt aatcaaaaac tgcagaattg gggccctgct aaggcaacaa     2520
+
+ggtaaggagt ggggtaacag gtttgtaaca ttggtagaag ctggcaagag agagttggcc     2580
+
+atccccgtaa ttcacggagc gggaggaagt gggaagtcac aagcattgca gaccctgatt     2640
+
+aaggacaacc cagagcttga ta                                              2662
+
+
+<210>  7
+<211>  8
+<212>  PRT
+<213>  Artificial sequence
+
+<220>
+<223>  OVA peptide
+
+<400>  7
+
+Ser Ile Ile Asn Phe Glu Lys Leu 
+1               5               
+
+

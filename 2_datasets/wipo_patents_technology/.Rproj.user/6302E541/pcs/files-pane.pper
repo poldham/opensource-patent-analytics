@@ -1,0 +1,9 @@
+{
+    "path" : "~/opensource-patent-analytics/2_datasets2/wipo_patents_technology",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

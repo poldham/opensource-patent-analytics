@@ -1,0 +1,25 @@
+{
+    "contents" : "",
+    "created" : 1435230237533.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "88B4D1AD",
+    "lastKnownWriteTime" : 2947969906044390656,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "l1a9btyllx",
+        "caption" : "wipotech",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=wipotech&cache_key=l1a9btyllx",
+        "displayedObservations" : "201280",
+        "environment" : "",
+        "object" : "wipotech",
+        "totalObservations" : "201280",
+        "variables" : "10"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}
