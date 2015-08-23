@@ -1,0 +1,1 @@
+This is the folder for the materials presented at the WIPO Regional Workshop on Free and Open Source Tools for Patent Analysis held in Rio de Janeiro between August 27 and 28, 2015. 
