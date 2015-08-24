@@ -1,0 +1,1 @@
+To download a file click on the file and then the View Raw link or open in Github Desktop icon. It may be easier to download all files in the .zip file.
