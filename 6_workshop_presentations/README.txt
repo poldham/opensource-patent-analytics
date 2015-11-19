@@ -1,0 +1,1 @@
+This folder contains presentations from the WIPO/INPI in Brazil and WIPO/IPOPHIL regional workshops on open source patent analytics. Additional files will be added as they become available.
