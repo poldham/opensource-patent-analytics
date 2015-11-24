@@ -1,5 +1,11 @@
 Use one or more of these files to generate a network graph. The aim of the assignment is to produce one (or more) network visual that is suitable to display to clients. 
 
+Accessing the Files
+
+To download all of the files click on the .zip file and then click on Raw. The file will then start downloading. Use unzip software to decompress. 
+
+The Assignment
+
 The choice is yours but the pizza_phrases or inventors files are logical targets for the assignment.
 
 To download a file on Github click on a name and then
