@@ -1,0 +1,1 @@
+This folder contains short patent data from the pizza_medium_clean dataset. The short data was generated in RStudio and you can find the code in the tidy_data.Rmd file
