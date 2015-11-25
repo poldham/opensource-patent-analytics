@@ -181,7 +181,6 @@ In this case, we have not added the call to qplotbut we will do so now.
 qplot(x = pubyear, y = publications, data = df, geom = "line", xlim = c(1940,2012))
 ```
 
-
 ##Tidying data - Separating and Gathering
 
 In patent data we often see concatenated fields with a separator (normally a ;). These are typically applicant names, inventor names, IPC codes, or document numbers (priority numbers, family member numbers). To work with this data we will typically need to do two things. 
@@ -241,7 +240,6 @@ df2$applicants <- str_trim(df2$applicants, side = "both")
 ```
 
 Note that when using `str_trim()` we use subsetting to modify the applicants column in place. There is possibly a more efficient way of doing this with pipes but this appears difficult because the data.frame needs to exist for the `str_trim()` to act on in place or we end up with a vector of applicant names rather than a data.frame.   
-
 We now have some working code that will separate out our names, gather it back in and then trim it. However, it would be very helpful if we knew the maximum number of names that the applicants, inventors or IPC code field breaks into in a given dataset. The code below is a small function that starts by counting the number of separators (sep) in a column (col) using the str_count function from `stringr`. In this case some of the fields are NA. In R, where a vector contains NA values R will always return NA as the answer. So, we use na.omit() to remove NA from the calculation (note that we are using pipes so name data only once). Then we create a separate object that calculates the maximum value (max ()). We need to oblige R to do this as an integer by placing the max() function inside as.integer. Because the final concatenated name or code in a string will not possess a separator at the end we use +1 to accomodate this.
 
 ```{r counting names}
@@ -287,7 +285,7 @@ phrase_google <- select(google, title_nlp_multiword_phrases, publication_number)
   gather(x, phrases, 1:30, na.rm = TRUE) 
 phrase_google$phrases <- str_trim(phrase_google$phrases, side = "both")
 
-#now we sum up the trimmed data and arrange in descenging order
+#now we sum up the trimmed data and arrange in descending order
 phrase_google <- select(phrase_google, phrases, n) %>%
   count(phrases, wt = n) %>%
   arrange(desc(n)) %>%
@@ -312,35 +310,23 @@ write_csv(pcy_spread, "country_totals.csv")
 ```
 
 
-
 ##IPC data
+
+This is a little more involved and can probably be simplified. The aim is to create a file with the top IPC subclasses. 
 
 ```{r}
 ipc_detail <- select(pizza, ipc_subclass_detail, publication_number) %>%
-  mutate(n = sum(publication_number = 1)) %>% 
-  count(ipc_subclass_detail, wt = n) %>%
-  filter(n)
-
-%>%
-  spread(ipc_subclass_detail, n)
-write_csv(pcy_spread, "country_totals.csv")
-```
-
-
-
-
-
-
-
-
-
-###Workings (ignore)
-
-```{r}
-app_plot <- 
-  select(df3, publication_number, applicants) %>%
   mutate(n = sum(publication_number = 1)) %>%
-  count(applicants, wt = n) %>%
+  select(ipc_subclass_detail, n) %>%
+  separate(ipc_subclass_detail, 1:50, sep = ";", fill = "right") %>%
+  gather(t, ipc_subclass_detail, 1:50, na.rm = TRUE) %>%
+  select(1, 3, - 2)
+ipc_detail$ipc_subclass_detail <- str_trim(ipc_detail$ipc_subclass_detail, side = "both")
+ipc_detail <- count(ipc_detail, ipc_subclass_detail, wt = n) %>%
   arrange(desc(n)) %>%
-  print()
+  filter(n >= 542)
+write_csv(ipc_detail, "pizza_ipc_top10.csv")
 ```
+
+
+
