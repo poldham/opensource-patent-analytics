@@ -1,0 +1,346 @@
+---
+title: "Tidy Data"
+author: "Paul Oldham"
+date: "19 August 2015"
+output: html_document
+---
+The WIPO Open Source Patent Analytics Manual is written in Rmarkdown. This is what the interface looks like when you are writing. 
+
+1. There is the writing/scripting panel
+2. There is the Environment panel showing what data is stored in our environment
+3. There is a history panel (showing commands we have used)
+4. There is a packages panel to load packages
+5. We can work in the console and see results
+6. We can write code chunks into documents
+
+##Installing packages and Loading Libraries
+
+R works using packages (libraries) and there are around 7,490 of them for a whole range of purposes. We will use just a few of them. To install a package we use the following. Copy and paste the code into the Console and press enter.  
+
+```{r eval=FALSE}
+install.packages("readr") # read in .csv files `readxl` for excel files
+install.packages("dplyr") # wrangle data
+install.packages("tidyr") # tidy data
+install.packages("stringr") # work with text strings
+```
+
+Packages can also be installed by selecting the Packages tab and typing the name of the package. 
+To load the package (library) use the following. 
+ 
+```{r eval=FALSE}
+library(readr) 
+library(dplyr) 
+library(tidyr) 
+library(stringr)
+library(ggplot2)
+```
+
+##Load a .csv file using `readr`
+
+```{r}
+pizza <- read_csv("/Users/pauloldham17inch/opensource-patent-analytics/2_datasets/pizza_medium_clean/pizza.csv")
+```
+
+Either use your local file (you must have the full path) or download directly from the data repository (the raw file link).
+
+```{r}
+pizza <- read_csv("https://github.com/poldham/opensource-patent-analytics/raw/master/2_datasets/pizza_medium_clean/pizza.csv")
+```
+
+Note that file paths must go into quotation marks or you will get an error message in red. 
+
+`readr` and `readxl` are quite new. For more complex data see the Manual articles on the [`readr`](http://poldham.github.io/reading-csv-files-in-R/) and [`readxl`](http://poldham.github.io/reading-writing-excel-files-R/) packages for importing Excel.
+
+##Viewing Data
+
+We can view data in a variety of ways. 
+
+1. In the console
+
+```{r}
+pizza 
+```
+
+2. In environment click on the blue arrow to see in the environment. Keep clicking to open a new window with the data. 
+
+3. Use the `View()` command (for data.frames and tables)
+
+```{r}
+View(pizza)
+```
+
+If possible use the View() command or environment. The difficulty with the console is that large amounts of data will simply stream past. 
+
+##Identifying Types of Object
+
+We often want to know what type of object we are working with and more details about the object so we know what to do later. Here are some of the most common commands for obtaining information about objects.
+
+```{r eval=FALSE}
+class(pizza) ## type of object
+names(pizza) ## names of variables
+str(pizza) ## structure of object
+dim(pizza) ## dimensions of the object
+```
+
+The most useful command in this list is `str()` because this allows us to access the structure of the object and see its type
+
+```{r}
+str(pizza)
+```
+
+This will tell us that the pizza object has three classes (most have one) but this is not a bad thing. We will also see the names of the fields (vectors) and their type. Most patent data is a character vector with dates forming integers. 
+
+##Working with Data
+
+We will often want to select aspects of our data to focus on a specific set of columns or to create a graph. We might also want to add information, such as numeric count. 
+
+The `dplyr` package provides a set of very handy functions for selecting, adding and counting data. 
+
+###Select
+
+In this case we will start by using the `select()` function to limit the data to specific columns. We can do this using their names or their numeric position (best for large number of columns e.g. 1:31). In `dplyr` existing character columns do not require `""`.
+
+```{r}
+total <- select(pizza, publication_number, publication_year)
+```
+
+We now have a new data.frame that contains two columns. One with the year and one with the publication number. Note that we have created a new object called total using `<-` and that after select we have named our original data and the columns we want. A fundamental feature of select is that it will drop columns that you do not name. So it is best to create a new object if you want to keep your original data for later work. 
+
+###Adding data with `mutate()`
+
+`mutate()` is a `dplyr` function that allows us to add data based on existing data in our data frame, for example to perform a calculation. In the case of patent data we normally lack a numeric field to use for counts. We can however assign a value to our publication field by using sum() and the number 1 as follows. 
+
+```{r}
+total <- mutate(total, n = sum(publication_number = 1))
+```
+
+When we view total we now have a value of 1 in the column `n` for each publication number. Note that in some cases a publication or family number may occur multiple times and we would want to reduce the dataset to distinct records. For that we would use `n_distinct()` from `dplyr` or `unique()` from base R but we will continue as is for the moment.
+
+###Counting data using `count()`
+
+At the moment, we have multiple instances of the same year (where a patent publication occurs in that year). We now want to calculate how many of our documents were published in each year. To do that we will use the `dplyr` function `count()`. We will use the publication_year and add `wt = ` (for weight) with n as the value to count.   
+
+```{r}
+total <- count(total, publication_year, wt = n)
+```
+
+When we now examine total, we will see the publication year and a summed value for the records in that year. 
+
+###Renaming a field using `rename()`
+
+Next we will use rename from `dplyr` to rename the fields. Note that understanding which field require quote marks can take some effort. In this case renaming the character vector publication_year as "pubyear" requires quote while renaming the numeric vector does not. 
+
+```{r}
+total <- rename(total, "pubyear" = publication_year, publications = n)
+```
+
+###Make a quickplot with `qplot()`
+
+Using the `qplot()` function in ggplot2 we can now draw a quick line graph. Note that qplot() is unusual in R because the data (total) appears after the coordinates. We will specify that we want a line using `geom =` (if geom is left out it will be a scatter plot) and limit the x axis using xlim to take out the data cliff that is normal with patent data due to a lack of complete records for recent years. 
+
+```{r}
+qplot(x = pubyear, y = publications, data = total, geom = "line", xlim = c(1940,2012))
+```
+
+For more details on graphing in R see the [qplot](http://poldham.github.io/ggplot_pizza_patents_part1/) and [gglot2](http://poldham.github.io/ggplot_pizza_patents_part2j/) articles. 
+
+###Simplify code using pipes `%>%`
+
+So far we have handled the code one line at a time. But, one of the great strengths of using a programming language is that we can run multiple lines of code together. There are two basic ways that we can do this
+
+1. The standard or old fashioned way
+
+```{r}
+total <- select(pizza, publication_number, publication_year)
+total <- mutate(total, n = sum(publication_number = 1))
+total <- count(total, publication_year, wt = n)
+total <- rename(total, "pubyear" = publication_year, publications = n)
+qplot(x = pubyear, y = publications, data = total, geom = "line", xlim = c(1940,2012))
+```
+
+The code we have just created is four lines long. We could select all of this code and run it in one go in the console. Try it (you must have imported pizza first).
+
+2. Using pipes `%>%`
+
+An alternative way to do this is to use pipes that were first introduced in the `magrittr` package and then picked up in dplyr and tidyr. Pipes are now very popular because they simplify writing R code and speed it up. The most popular pipe is %>% which means "this then that". 
+
+```{r}
+df <- 
+  select(pizza, publication_number, publication_year) %>%
+  mutate(n = sum(publication_number = 1)) %>%
+  count(publication_year, wt = n) %>%
+  rename("pubyear" = publication_year, publications = n)
+print(df)
+```
+
+In this case we have created a new object (df for data.frame) and then the code. Note that we have not created and then over-written the total object at each point. Note also that with the exception of the first line we have not had to name the source data as the first expression in the functions. As a result it is easier to read and to understand.
+
+In this case, we have not added the call to qplotbut we will do so now.  
+
+```{r}
+qplot(x = pubyear, y = publications, data = df, geom = "line", xlim = c(1940,2012))
+```
+
+
+##Tidying data - Separating and Gathering
+
+In patent data we often see concatenated fields with a separator (normally a ;). These are typically applicant names, inventor names, IPC codes, or document numbers (priority numbers, family member numbers). To work with this data we will typically need to do two things. 
+
+1. Separate the data so that each name is distinct. This normally involves separating into columns
+2. Gathering the data back in. This involves transforming the data in columns into rows. 
+
+The tidyr package contains two functions that are very useful when working with patent data. The first of these is separate. 
+
+Here we will work with the applicants_cleaned field in the pizza dataset. This field contains concatenated names with a `;` as the separator. The first issue we will encounter is that we do not know how many names might be in the data. One option is to use an arbitrarily high number.
+
+###Separate
+
+In the first step we use the tidyr `separate()` function. Ideally the field we want to separate is the first column because we will be using the numeric positions of the columns. In the case of the pizza data the applicants_cleaned field is already the first column. If we wanted to move a column to the first position we could use select() as follows. To illustrate this we will create an object called pizza1.
+
+```{r}
+pizza1 <- select(pizza, 2:31, 1) #moves column 1 to the end
+pizza1 <- select(pizza1, 31, 1:30) #moves column 31 to the first column
+```
+
+Next we use select(), we begin by creating df2, with pizza as the data that we want to use. This is followed by the unquoted name of the column and the number of columns we want to separate the applicants into (1:30). We then specify the separator with the `;`. The next two arguments are for what to do with any extra data and the direction to fill cells. We use fill = "right" because separate will throw an error if the pieces are not all of the same size. 
+
+```{r}
+df2 <- separate(pizza, applicants_cleaned, 1:30, sep = ";", extra = "merge", fill = "right") 
+```
+
+Note that while this works there is some inconsistency where the underlying data has a semicolon as the separator where it should be a `,`. As a result some of the names will be incorrectly split. We will simply live with this for the time being. 
+
+The second step is to use the `tidyr()` function `gather()`. This will gather the columns we specify into rows. gather() involves specifying a key value pair. We can introduce the key (a numeric value) if we don't have one by specifying a column name and gather will create it for us. In this case we use `n`. The we specify the value - the column that we want to gather the names into - that we will call applicants. Then we specify the columns to gather by their numeric position. Finally, where there are NA (Not Available) values we specify na.rm = TRUE to remove them. 
+
+```{r}
+df2 <- gather(df2, n, applicants, 1:30, na.rm = TRUE)
+```
+
+We now have a data.frame with 32 columns and 14,461 rows. If we use `View(df2)` we will see that `tidyr` has created our applicants column at the end of the data.frame (column 32).
+
+However, if we now inspect the column by subsetting into it using $ we will see that a lot of the names have a leading whitespace space. This results from the separate exercise where the ; is actually `;space`. Take a look at the data. 
+
+```{r}
+df2$applicants
+```
+
+We can address this using a function from the stringr package `str_trim`. We have a choice with str_trim on whether to trim the whitespace on the right, left or both. Here we have chosen both. Trimming whitespace is important because it affects how names will rank at a later stage. For example " Dibble, James W" will be treated as a separate name from "Dibble, James W". 
+
+Because we are seeking to modify an existing column (not to create a new vector or data.frame) we will use `$` in the object and as the data for the str_trim function. 
+
+```{r}
+df2$applicants <- str_trim(df2$applicants, side = "both")
+```
+
+We can tie these steps together using pipes into the following simpler code. 
+
+```{r}
+df2 <- separate(pizza, applicants_cleaned, 1:30, sep = ";", extra = "merge", fill = "right") %>%
+  gather(n, applicants, 1:30, na.rm = TRUE) 
+df2$applicants <- str_trim(df2$applicants, side = "both")
+```
+
+Note that when using `str_trim()` we use subsetting to modify the applicants column in place. There is possibly a more efficient way of doing this with pipes but this appears difficult because the data.frame needs to exist for the `str_trim()` to act on in place or we end up with a vector of applicant names rather than a data.frame.   
+
+We now have some working code that will separate out our names, gather it back in and then trim it. However, it would be very helpful if we knew the maximum number of names that the applicants, inventors or IPC code field breaks into in a given dataset. The code below is a small function that starts by counting the number of separators (sep) in a column (col) using the str_count function from `stringr`. In this case some of the fields are NA. In R, where a vector contains NA values R will always return NA as the answer. So, we use na.omit() to remove NA from the calculation (note that we are using pipes so name data only once). Then we create a separate object that calculates the maximum value (max ()). We need to oblige R to do this as an integer by placing the max() function inside as.integer. Because the final concatenated name or code in a string will not possess a separator at the end we use +1 to accomodate this.
+
+```{r counting names}
+library(stringr)
+library(dplyr)
+actor_count <- function(data, col = "", sep = "[^[:alnum:]]+") {
+  actor_count <- str_count(data[[col]], pattern = sep) %>%
+    na.omit()
+  n <- as.integer(max(actor_count) + 1) %>%
+  print()
+}
+```
+
+Copy and paste the above code into the console to make the function available. Head to the Environment tab and you should see it in the fuctions.
+
+```{r}
+n <- actor_count(pizza, "applicants_cleaned", sep = ";")
+```
+
+We can now rerun our original code and instead of using an arbitrary number we can use the value of `n`. 
+
+```{r}
+df3 <- separate(pizza, applicants_cleaned, 1:n, sep = ";", extra = "merge", fill = "right") %>%
+  gather(n, applicants, 1:n, na.rm = TRUE) 
+df3$applicants <- str_trim(df3$applicants, side = "both")
+```
+
+##Selecting applicants using `filter()`
+
+Wheras select functions with columns, filter() words with rows. 
+
+```{r}
+google <- filter(df1, applicants == "Google Inc")
+```
+
+Note that the correct result will only be achieved where you used the separated and trimmed data we created in df1. 
+
+```{r}
+phrase_google <- select(google, title_nlp_multiword_phrases, publication_number) %>%
+  separate(title_nlp_multiword_phrases, 1:30, sep = ";", fill = "right") %>%
+  mutate(n = sum(publication_number = 1)) %>%
+  select(1:30, 32) %>%
+  gather(x, phrases, 1:30, na.rm = TRUE) 
+phrase_google$phrases <- str_trim(phrase_google$phrases, side = "both")
+
+#now we sum up the trimmed data and arrange in descenging order
+phrase_google <- select(phrase_google, phrases, n) %>%
+  count(phrases, wt = n) %>%
+  arrange(desc(n)) %>%
+  filter(n >= 3)
+write_csv(phrase_google, "google_phrases.csv") #write to a .csv file
+```
+
+#Spreading data using spread()
+
+There are two main data formats: Long and wide. Long data is typically the aim of tidying data where observations (values) of the same variables (publication numbers, years, country names etc.) are grouped into the same columns. However, quite a number of applications may expect the data to be in wide format. In this case each country or year would appear as a separate column. 
+
+In this example we will take some long data and convert it into a wide format for use with [infogr.am](https://infogr.am/). 
+
+In using spread note that it takes a data argument (pizza) and a key, and value column. In this case the data is named in the first line and does not need to be named again. For additional arguments see ?spread(). In this case we are specifying that we want to spread the country names (as the key) with `n` as the value. The other workings before spread will be familiar by now.  
+
+```{r}
+country_totals <- select(pizza, publication_country_name, publication_number, publication_year) %>%
+  mutate(n = sum(publication_number = 1)) %>% 
+  count(publication_country_name, publication_year, wt = n) %>%
+  spread(publication_country_name, n)
+write_csv(pcy_spread, "country_totals.csv")
+```
+
+
+
+##IPC data
+
+```{r}
+ipc_detail <- select(pizza, ipc_subclass_detail, publication_number) %>%
+  mutate(n = sum(publication_number = 1)) %>% 
+  count(ipc_subclass_detail, wt = n) %>%
+  filter(n)
+
+%>%
+  spread(ipc_subclass_detail, n)
+write_csv(pcy_spread, "country_totals.csv")
+```
+
+
+
+
+
+
+
+
+
+###Workings (ignore)
+
+```{r}
+app_plot <- 
+  select(df3, publication_number, applicants) %>%
+  mutate(n = sum(publication_number = 1)) %>%
+  count(applicants, wt = n) %>%
+  arrange(desc(n)) %>%
+  print()
+```
