@@ -274,7 +274,7 @@ Wheras select functions with columns, filter() words with rows.
 google <- filter(df3, applicants == "Google Inc")
 ```
 
-Note that the correct result will only be achieved where you used the separated and trimmed data we created in df1. 
+Note that the correct result will only be achieved where you used the separated and trimmed data we created in df3. 
 
 ```{r}
 phrase_google <- select(google, title_nlp_multiword_phrases, publication_number) %>%
