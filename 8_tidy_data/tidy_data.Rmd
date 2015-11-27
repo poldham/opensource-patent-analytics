@@ -32,7 +32,6 @@ library(readr)
 library(dplyr) 
 library(tidyr) 
 library(stringr)
-library(ggplot2)
 ```
 
 ##Load a .csv file using `readr`
@@ -272,7 +271,7 @@ df3$applicants <- str_trim(df3$applicants, side = "both")
 Wheras select functions with columns, filter() words with rows. 
 
 ```{r}
-google <- filter(df1, applicants == "Google Inc")
+google <- filter(df3, applicants == "Google Inc")
 ```
 
 Note that the correct result will only be achieved where you used the separated and trimmed data we created in df1. 
@@ -306,7 +305,7 @@ country_totals <- select(pizza, publication_country_name, publication_number, pu
   mutate(n = sum(publication_number = 1)) %>% 
   count(publication_country_name, publication_year, wt = n) %>%
   spread(publication_country_name, n)
-write_csv(pcy_spread, "country_totals.csv")
+write_csv(country_totals, "country_totals.csv")
 ```
 
 
