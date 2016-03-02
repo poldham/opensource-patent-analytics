@@ -1,0 +1,15 @@
+Patentscope Pizza Search
+
+The original search of English All produced 24,537 results on the 9th of February 2016
+
+These were broken down using Advanced Search Publication Date and English All (EN_ALL) as follows in three datasets
+
+pizza = English All = 24537
+DP:([01.01.1940 TO 31.12.2005) AND EN_ALL:pizza  =9659 results
+DP:([01.01.2006 TO 31.12.2011]) AND EN_ALL:pizza = 8458
+DP:([01.01.2012 TO 31.12.2015]) AND EN_ALL:pizza = 6177
+
+Total for delimited years = 24,294
+
+
+
