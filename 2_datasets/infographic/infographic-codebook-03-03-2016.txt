@@ -1,0 +1,1 @@
+Infographic is a dataset generated from pizza medium clean and processed in R for presentation in the inforaphic chapter of the open source patent analytics manual. 
