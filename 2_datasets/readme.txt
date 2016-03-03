@@ -23,4 +23,4 @@ Other files in the folders are working copies and have generally been cleaned in
 The synthetic biology dataset was developed by Paul Oldham as part of a separate project but is made available as an illustration of the content of files from Thomson Innovation compared with other sources. 
 
 Paul Oldham
-updated 20/08/2015
+updated 03/03/2016
