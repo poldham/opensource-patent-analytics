@@ -1,0 +1,177 @@
+---
+title: "drones_cleaning"
+author: "Paul Oldham"
+date: "25 September 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This document contains the code used to parse the Lens patent database results for a search for "drone" or "drones" in the full text and the title, abstract or claims. The tables generated are used in the inographic session of the WIPO patent analytics training.
+
+Note that the data is limited using filter() to the period 1990 -2
+
+```{r}
+library(readr)
+library(plyr)
+library(dplyr)
+library(tidyr)
+library(stringr)
+```
+
+
+```{r}
+drones_cleaned <- readr::read_csv("/Users/pauloldham17inch/Desktop/WIPO\ Training/dronesr/drones_fulltext/drones_fulltext_cleaned_5884.csv") %>% 
+  oldhammisc::addcol(., "weight", 1) # note use of oldhammisc on github here.
+```
+
+```{r}
+drones_cleaned <- dplyr::filter(drones_cleaned, publication_year >= 1990, publication_year <= 2015)
+```
+
+Generate applicants table
+
+```{r}
+organisations_cleaned <- dplyr::select(drones_cleaned, applicants_organisations_only, weight) %>% 
+  tidyr::separate_rows(applicants_organisations_only, sep = ";") 
+
+organisations_cleaned$applicants_organisations_only <-  stringr::str_trim(organisations_cleaned$applicants_organisations_only, side = "both")
+
+organisations_count <- dplyr::count(organisations_cleaned, applicants_organisations_only, wt = weight) %>% 
+  na.omit() %>% 
+  dplyr::arrange(desc(n))
+readr::write_csv(organisations_count, "drones_organisations_count_fulltext.csv")
+```
+
+Inventors
+
+```{r}
+inventors_cleaned <- select(drones_cleaned, inventors_useme, weight) %>% 
+  tidyr::separate_rows(inventors_useme, sep = ";") 
+inventors_cleaned$inventors_useme <-  stringr::str_trim(inventors_cleaned$inventors_useme, side = "both")
+inventors_count <- count(inventors_cleaned, inventors_useme, wt = weight) %>% 
+  na.omit() %>% 
+  arrange(desc(n))
+readr::write_csv(inventors_count, "drones_inventors_count_fulltext.csv")
+```
+
+IPCs
+
+```{r}
+ipc_short <- select(drones_cleaned, ipc_short, weight) %>% 
+  tidyr::separate_rows(ipc_short, sep = ";") 
+ipc_short$ipc_short <-  stringr::str_trim(ipc_short$ipc_short, side = "both")
+ipc_short_count <- count(ipc_short, ipc_short, wt = weight) %>% 
+  na.omit() %>% 
+  arrange(desc(n))
+readr::write_csv(ipc_short_count, "drones_ipc_short_count_fulltext.csv")
+```
+
+phrases
+
+```{r}
+phrases <- select(drones_cleaned, title_phrases, weight) %>% 
+  tidyr::separate_rows(title_phrases, sep = ";") 
+phrases$title_phrases <-  stringr::str_trim(phrases$title_phrases, side = "both")
+phrases_count <- count(phrases, title_phrases, wt = weight) %>% 
+  na.omit() %>% 
+  arrange(desc(n))
+readr::write_csv(phrases, "drones_phrases_fulltext.csv")
+```
+
+Needs to be the top 10?
+
+Trends - Publication count by country
+
+Needs to be in format for infor.gram
+
+```{r}
+country_totals <- select(drones_cleaned, publication_country_name, publication_year, weight) %>%
+  count(publication_country_name, publication_year, wt = weight) %>% # note n
+  spread(publication_year, n) # note nn
+country_totals
+readr::write_csv(country_totals, "drones_country_totals_fulltext.csv")
+```
+
+Filtering Main data frame
+
+```{r}
+tac <- dplyr::filter(drones_cleaned, title_abstract_claims == "tac")
+fulltext <- dplyr::filter(drones_cleaned, title_abstract_claims == "full_text")
+```
+
+###Title Abstract Claims Dataset
+
+```{r}
+drones_tac_cleaned <- readr::read_csv("/Users/pauloldham17inch/Desktop/WIPO\ Training/dronesr/drones_tac/drones_tac_1606_cleaned.csv") %>% 
+  oldhammisc::addcol(., "weight", 1)
+drones_tac_cleaned <- dplyr::filter(drones_tac_cleaned, publication_year >= 1990, publication_year <= 2015)
+```
+
+###Generate applicants TAC table
+
+```{r}
+organisations_tac <- select(drones_tac_cleaned, applicants_organisations_only, weight) %>% 
+  tidyr::separate_rows(applicants_organisations_only, sep = ";") 
+organisations_tac$applicants_organisations_only <-  stringr::str_trim(organisations_tac$applicants_organisations_only, side = "both")
+organisations_tac_count <- count(organisations_tac, applicants_organisations_only, wt = weight) %>% 
+  na.omit() %>% 
+  arrange(desc(n))
+readr::write_csv(organisations_tac_count, "drones_organisations_count_tac.csv")
+```
+
+###Inventors TAC
+
+```{r}
+inventors_tac <- select(drones_tac_cleaned, inventors_useme, weight) %>% 
+  tidyr::separate_rows(inventors_useme, sep = ";") 
+inventors_tac$inventors_useme <-  stringr::str_trim(inventors_tac$inventors_useme, side = "both")
+inventors_tac_count <- count(inventors_tac, inventors_useme, wt = weight) %>% 
+  na.omit() %>% 
+  arrange(desc(n))
+readr::write_csv(inventors_tac_count, "drones_inventors_count_tac.csv")
+```
+
+###IPC TAC
+```{r}
+ipc_tac_short <- select(drones_tac_cleaned, ipc_short, weight) %>% 
+  tidyr::separate_rows(ipc_short, sep = ";") 
+ipc_tac_short$ipc_short <-  stringr::str_trim(ipc_tac_short$ipc_short, side = "both")
+ipc_tac_short_count <- count(ipc_tac_short, ipc_short, wt = weight) %>% 
+  na.omit() %>% 
+  arrange(desc(n))
+readr::write_csv(ipc_tac_short_count, "drones_ipc_short_count_tac.csv")
+```
+
+###phrases TAC
+
+```{r}
+phrases_tac <- select(drones_tac_cleaned, title_phrases, weight) %>% 
+  tidyr::separate_rows(title_phrases, sep = ";") 
+phrases_tac$title_phrases <-  stringr::str_trim(phrases_tac$title_phrases, side = "both")
+phrases_tac_count <- count(phrases_tac, title_phrases, wt = weight) %>% 
+  na.omit() %>% 
+  arrange(desc(n))
+readr::write_csv(phrases_tac_count, "drones_phrases_count_tac.csv")
+```
+
+```{r}
+country_tac_totals <- select(drones_tac_cleaned, publication_country_name, publication_year, weight) %>%
+  count(publication_country_name, publication_year, wt = weight) %>% # note n
+  spread(publication_year, n) # note nn
+country_tac_totals
+readr::write_csv(country_tac_totals, "drones_country_totals_tac.csv")
+```
+
+
+```{r}
+#testfunct <- function(x, col = "", count = ""){
+#  df <- dplyr::select_(x, col, count) %>% 
+#    tidyr::separate_rows_(col, sep = ";")
+#  df[col] <- stringr::str_trim(df[col], side = "both")
+#  df #behaving rather weirdly by producing concatenated tibble
+#}
+#testme <- testfunct(drones_cleaned, "inventors_useme", "weight") 
+```
